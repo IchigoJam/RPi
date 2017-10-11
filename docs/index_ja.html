@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>IchigoJam BASIC RPi1.2 ドキュメント</title>
+	<meta name="keywords" content="IchigoJam,Raspberry Pi" />
+	<meta name="description" content="" />
+	<meta property="og:title" content="IchigoJam BASIC RPi1.2" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://ichigojam.github.io/RPi/" />
+	<meta property="og:locale" content="ja_JP" />
+	<meta property="og:image" content="https://ichigojam.github.io/RPi/image/fb.png" />
+	<meta property="og:site_name" content="IchigoJam BASIC RPi1.2" />
+	<link rel="stylesheet" type="text/css" href="./style.css" />
+</head>
+<body>
+
+<div id="title">
+	<h1>IchigoJam BASIC RPi1.2 ドキュメント</h1>
+	<p>[2017/10/16]</p>
+	<p><a href="index.html">English Edition(英語版) &gt;</a></p>
+</div><!-- /#title -->
+
+<div id="lead">
+	<p class="photo">
+		IchigoJam BASIC RPi は、「こどもパソコンIchigoJam」のソフトウェアの Raspberry Pi 版です。<br/>
+		オリジナル版(LPC1114版)については、<a target="_blank" href="https://ichigojam.net/">https://ichigojam.net/</a>をご覧ください。<br/>
+		IchigoJam は、BASIC言語によるプログラミングを手軽に楽しむために開発されました。<br/>
+		また、デジタル入出力, PWM, I2C, UART などの機能を使って、電子工作に活用することもできます。<br/>
+	</p>
+</div><!-- /#lead -->
+
+<div id="contents">
+	<div>
+		<h2>1. 利用条件</h2>
+		<p><a target="_blank" href="https://ichigojam.net/ichigojam-license.pdf">利用規約</a>に同意の上、ダウンロードしてください。第三者への配布には別途契約が必要となります。</p>
+	</div>
+
+	<div>
+		<h2>2. 対応機種</h2>
+		<p>下記の機種で動作確認しています。</p>
+		<ul>
+				<li>Raspberry Pi 3 Model B V1.2</li>
+				<li>Raspberry Pi Zero V1.3</li>
+				<li>Raspberry Pi 2 Model B V1.2</li>
+				<li>Raspberry Pi Zero W V1.1</li>
+		</ul>
+		<p class="note">※ Zero と Zero W については キーボードからの入力の反応がよくない現象が報告されていますが、<br />それ以外は Pi 3, Pi 2 と同様にご利用いただけます。</p>
+	</div>
+
+	<div>
+		<h2>3. ダウンロード</h2>
+		<p>下記よりダウンロードできます。</p>
+		<p class="link"><a href="downloads/index_ja.html">Downloads</a></p>
+	</div><!-- /-->
+
+	<div>
+		<h2>4. 使い方</h2>
+		<div class="block">
+			<h3>インストール</h3>
+			<p>Raspberry Pi で使用する microSDメモリーカード を FAT32 でフォーマットし、<br />readme.txt を含むディレクトリの中身をコピーします。</p>
+		</div><!-- /.block-->
+
+		<div class="block">
+		<h3>起動時のキーボード設定</h3>
+		<p>keymap.txt で起動時のキーボードの種類を設定できます。</p>
+
+		<table>
+			<tr>
+				<th>keymap.txt に記入するテキスト</th>
+				<th>キーボードの種類</th>
+			</tr>
+			<tr>
+				<td>us</td>
+				<td>USキーボード</td>
+			</tr>
+			<tr>
+				<td>jp</td>
+				<td>JPキーボード</td>
+			</tr>
+		</table>
+		<p class="note">※ キーボードの種類は起動後にKBDコマンドでも変更できます。(下記参照)</p>
+		</div><!-- /.block-->
+
+
+		<div class="block">
+		<h3>チュートリアル</h3>
+
+		<div>
+			<h4>I. IchigoJam BASIC を起動する</h4>
+			<dl>
+				<dt><img src="image/basic1.jpg" alt="" /></dt>
+				<dd>
+					<ul>
+						<li>Raspberry Pi に microSDメモリーカードを挿入します。</li>
+						<li>モニターとキーボードを接続します。</li>
+						<li>USBケーブルなどを接続し、電源を入れます。</li>
+					</ul>
+					<p>画面に左記のように表示されたら成功です!</p>
+				</dd>
+			</dl>
+		</div>
+
+		<div>
+			<h4>II. 本体のLEDを点灯する</h4>
+			<dl>
+				<dt><img src="image/basic2.jpg" alt="" /></dt>
+				<dd>
+					<p>キーボードから LED1 と入力し [Enter]キーを押します。</p>
+					<p>Raspberry Pi 本体の Activity LED (緑色) が点灯したら成功です!</p>
+				</dd>
+			</dl>
+		</div>
+
+		<div>
+			<h4>III. 本体のLEDを消灯する</h4>
+			<dl>
+				<dt><img src="image/basic3.jpg" alt="" /></dt>
+				<dd>
+					<p>キーボードから LED0 と入力し [Enter]キーを押します。</p>
+					<p>Raspberry Pi 本体の Activity LED (緑色) が消灯したら成功です!</p>
+				</dd>
+			</dl>
+		</div>
+		
+		<div>
+		  <h4>IV. LEDをチカチカさせる</h4>
+			<dl>
+				<dt><img src="image/basic4.jpg" alt="" /></dt>
+				<dd>
+					<ul>
+							<li>キーボードから 10 LED1: WAIT30 と入力し [Enter]キーを押します。</li>
+							<li>キーボードから 20 LED0: WAIT30 と入力し [Enter]キーを押します。</li>
+							<li>キーボードから 30 GOTO10 と入力し [Enter]キーを押します。</li>
+						<li>キーボードから RUN と入力し [Enter]キーを押します。</li>
+					</ul>
+					<p>
+						Raspberry Pi 本体の Activity LED (緑色)がチカチカしたら成功です!<br/>
+						停止させるときは [Esc]キーを押します。
+					</p>
+				</dd>
+			</dl>
+		</div>
+		
+		</div><!-- /.block-->
+		
+	</div><!-- /-->
+
+	<div>
+		<h2>5. オリジナル版との相違点</h2>
+		<p>
+			IchigoJam BASIC RPi は オリジナル版(LPC1114版)の 1.2.3 を元に移植されています。<br/>
+			操作方法や利用可能なコマンドは基本的にオリジナル版と同じですが、下記の点が異なります。<br/>
+			オリジナル版のドキュメントはこちらです。
+			<a target="_blank" href="https://ichigojam.net/IchigoJam-1.2.html">https://ichigojam.net/IchigoJam-1.2.html</a>
+		</p>
+
+		<div class="block">
+			<h3>未実装のキー操作</h3>
+			<p>下記のキー操作はRPi版には実装されていません</p>
+			<table id="five01">
+				<tr>
+					<th>キー</th>
+					<th>オリジナル版の動作</th>
+				</tr>
+				<tr>
+					<td>[右Alt]</td>
+					<td>カナ入力モード切り替え([カタカナ]と同じ)</td>
+				</tr>
+				<tr>
+					<td>[Ctrl] + [Shift]</td>
+					<td>カナ入力モード切り替え([カタカナ]と同じ)</td>
+				</tr>
+					<tr>
+					<td>[Ctrl] + [Alt]</td>
+					<td>挿入モード切り替え([Insert]と同じ)</td>
+				</tr>
+			</table>
+		</div><!-- /.block-->
+
+		<div class="block">
+			<h3>RPi版専用のキー操作</h3>
+			<p>下記のキー操作はRPi版にだけ実装されています</p>
+			<table id="five02">
+				<tr>
+					<th>キー</th>
+					<th>RPi版の動作</th>
+				</tr>
+				<tr>
+					<td>[右Alt] + [K]</td>
+					<td>カナ入力モード切り替え([カタカナ]と同じ)</td>
+				</tr>
+				<tr>
+					<td>[Ctrl] + [Shift] + [K]</td>
+					<td>カナ入力モード切り替え([カタカナ]と同じ)</td>
+				</tr>
+				<tr>
+					<td>[Ctrl] + [Alt] + [I]</td>
+					<td>挿入モード切り替え([Insert]と同じ)</td>
+				</tr>
+			</table>
+		</div><!-- /.block-->
+
+		<div class="block">
+			<h3>未実装のコマンド</h3>
+			<p>下記のコマンドはRPi版には実装されていません</p>
+			<table>
+				<tr>
+					<th>コマンド</th>
+					<th>オリジナル版の動作</th>
+					<th>RPi版の動作</th>
+				</tr>
+				<tr>
+					<td>VIDEO</td>
+					<td>画面の設定</td>
+					<td>なにもしない</td>
+				</tr>
+				<tr>
+					<td>SWITCH</td>
+					<td>ディスプレイの切り替え</td>
+					<td>なにもしない</td>
+				</tr>
+				<tr>
+					<td>SLEEP</td>
+					<td>システムの休止(ボタン押下でLRUN0を実行して復帰)</td>
+					<td>なにもしない</td>
+				</tr>
+				<tr>
+					<td>ANA</td>
+					<td>外部入力の電圧を数値で返す</td>
+					<td>常に0を返す</td>
+				</tr>
+				<tr>
+					<td>BEEP</td>
+					<td>BEEPを鳴らす</td>
+					<td>なにもしない</td>
+				</tr>
+				<tr>
+					<td>PLAY</td>
+					<td>MMLで記述した音楽を再生する</td>
+					<td>なにもしない</td>
+				</tr>
+				<tr>
+					<td>TEMPO</td>
+					<td>再生中の音楽のテンポを変更する</td>
+					<td>なにもしない</td>
+				</tr>
+				<tr>
+					<td>SOUND</td>
+					<td>音が再生中なら1を返す</td>
+					<td>常に0を返す</td>
+				</tr>
+				<tr>
+					<td>USR</td>
+					<td>マシン語呼び出し</td>
+					<td>なにもしない</td>
+				</tr>
+			</table>
+		</div><!-- /.block-->
+
+		<div class="block">
+			<h3>RPi版専用のコマンド</h3>
+			<p>下記のコマンドはRPi版にだけ実装されています</p>
+			<table>
+				<tr>
+					<th>コマンド</th>
+					<th>RPi版の動作</th>
+					<th>使用例</th>
+				</tr>
+				<tr>
+					<td>KBD</td>
+					<td>キーボードのキーマップの切り替え</td>
+					<td>
+						KBD 0 'USキーボードに切り替え<br/>
+						KBD 1 'JPキーボードに切り替え<br/>
+					</td>
+				</tr>
+			</table>
+		</div><!-- /.block-->
+
+		<div class="block">
+			<h3>その他</h3>
+			<p>その他、下記の相違点があります。</p>
+			<ul>
+				<li>キーボードを接続せずに電源投入すると、FILE0 を自動実行(LRUN0)します</li>
+				<li>PWM は PWM3 と PWM4 のみが使えます</li>
+				<li>IN3(OUT10)も OUT10,-2 でプルアップ入力になります</li>
+				<li>カーソルは点滅しません</li>
+				<li>LED と OUT7 は連動しません</li>
+				<li>WAIT の省電力モードには対応していません</li>
+			</ul>
+		</div><!-- /.block-->
+
+	</div><!-- /-->
+
+	<div>
+		<h2>6. IO系コマンドと物理PINの対応</h2>
+		<p>IN/OUT/PWM コマンドで実際に電流が入出力される物理PINは下記のようになります。</p>
+		<table>
+			<tr>
+				<th>物理PIN</th>
+				<th>入力</th>
+				<th>出力</th>
+				<th>PWM</th>
+				<th>初期状態</th>
+			</tr>
+			<tr>
+				<td>15</td>
+				<td>IN1</td>
+				<td>(OUT8)</td>
+				<td></td>
+				<td>入力(プルアップ)</td>
+			</tr>
+			<tr>
+				<td>13</td>
+				<td>IN2</td>
+				<td>(OUT9)</td>
+				<td></td>
+				<td>入力(オープン)</td>
+			</tr>
+			<tr>
+				<td>11</td>
+				<td>IN3</td>
+				<td>(OUT10)</td>
+				<td></td>
+				<td>入力(オープン)</td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td>IN4</td>
+				<td>(OUT11)</td>
+				<td></td>
+				<td>入力(プルアップ)</td>
+			</tr>
+			<tr>
+				<td>35</td>
+				<td>IN9</td>
+				<td></td>
+				<td></td>
+				<td>入力(オープン,固定)</td>
+			</tr>
+			<tr>
+				<td>37</td>
+				<td>(IN5)</td>
+				<td>OUT1</td>
+				<td></td>
+				<td>出力</td>
+			</tr>
+			<tr>
+				<td>36</td>
+				<td>(IN6)</td>
+				<td>OUT2</td>
+				<td></td>
+				<td>出力</td>
+			</tr>
+			<tr>
+				<td>33</td>
+				<td>(IN7)</td>
+				<td>OUT3</td>
+				<td>PWM3</td>
+				<td>出力</td>
+			</tr>
+			<tr>
+				<td>32</td>
+				<td>(IN8)</td>
+				<td>OUT4</td>
+				<td>PWM4</td>
+				<td>出力</td>
+			</tr>
+			<tr>
+				<td>38</td>
+				<td>(IN10)</td>
+				<td>OUT5</td>
+				<td></td>
+				<td>出力</td>
+			</tr>
+			<tr>
+				<td>40</td>
+				<td>(IN11)</td>
+				<td>OUT6</td>
+				<td></td>
+				<td>出力</td>
+			</tr>
+			<tr>
+				<td>26</td>
+				<td></td>
+				<td>OUT7</td>
+				<td></td>
+				<td>出力(固定)</td>
+			</tr>
+		</table>
+	</div><!-- /-->
+
+	<div>
+		<h2>7. サポート</h2>
+		<p>
+		  詳細は、Facebookグループ IchigoJam-FAN または ナチュラルスタイル までお問い合わせください。<br/>
+		  <a target="_blank" href="https://www.facebook.com/groups/ichigojam/">https://www.facebook.com/groups/ichigojam/</a><br/>
+		  <a target="_blank" href="http://na-s.jp">http://na-s.jp</a><br/>
+		</p>
+	</div><!-- /-->
+</div><!-- /#contents -->
+
+<div id="footer">
+	<div>
+		<p>IchigoJam は 株式会社jig.jp の登録商標です。<br />IchigoJam is a registered trademark of jig.jp co., ltd.</p>
+		<p>Raspberry Pi は Raspberry Pi財団の商標です。<br />Raspberry Pi is a trademark of the Raspberry Pi Foundation.</p>
+	</div>
+</div><!-- /#footer -->
+
+</body>
+</html>
+

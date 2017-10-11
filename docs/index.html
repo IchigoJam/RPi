@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>IchigoJam BASIC RPi1.2 Documents</title>
+	<meta name="keywords" content="IchigoJam,Raspberry Pi" />
+	<meta name="description" content="" />
+	<meta property="og:title" content="IchigoJam BASIC RPi1.2" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://ichigojam.github.io/RPi/" />
+	<meta property="og:locale" content="ja_JP" />
+	<meta property="og:image" content="https://ichigojam.github.io/RPi/image/fb.png" />
+	<meta property="og:site_name" content="IchigoJam BASIC RPi1.2" />
+	<link rel="stylesheet" type="text/css" href="./style.css" />
+</head>
+<body>
+
+<div id="title">
+	<h1>IchigoJam BASIC RPi1.2 Documents</h1>
+	<p>[2017/10/16]</p>
+	<p><a href="index_ja.html">日本語版(Japanese Edition) &gt;</a></p>
+</div><!-- /#title -->
+
+<div id="lead">
+	<p class="photo">
+		IchigoJam BASIC RPi is Raspberry Pi Edition of the software of the Kids PC "IchigoJam".<br/>
+		Refer to <a target="_blank" href="https://ichigojam.net/index-en.html">https://ichigojam.net/index-en.html</a> about original (LPC1114) edition.<br/>
+		IchigoJam was created to make it easy to enjoy programming in the BASIC language.<br/>
+		It can also be used for electronics hobby by using functions such as digital I/O, PWM, I2C and UART.<br/>
+	</p>
+</div><!-- /#lead -->
+
+<div id="contents">
+	<div>
+		<h2>1. Terms of use</h2>
+		<p>Agree to the <a target="_blank" href="https://ichigojam.net/ichigojam-license.pdf">Terms of use</a> and download it.
+		  Distribution to third parties requires a contract.</p>
+	</div>
+
+	<div>
+		<h2>2. Device compatibility</h2>
+		<p>Compatibility is confirmed with the following devices.</p>
+		<ul>
+				<li>Raspberry Pi 3 Model B V1.2</li>
+				<li>Raspberry Pi Zero V1.3</li>
+				<li>Raspberry Pi 2 Model B V1.2</li>
+				<li>Raspberry Pi Zero W V1.1</li>
+		</ul>
+		<p class="note">
+		  
+		  * The keyboard response of "Zero" and "Zero W" is not good for now.<br />
+		  However, Other than that, you can use those same as "Pi 3" and "Pi 2".
+		</p>
+	</div>
+
+	<div>
+		<h2>3. How to download</h2>
+		<p>You can download it from here.</p>
+		<p class="link"><a href="downloads/index.html">Downloads</a></p>
+	</div><!-- /-->
+
+	<div>
+		<h2>4. How to use</h2>
+		<div class="block">
+			<h3>Installation</h3>
+			<p>
+			  Format a microSD card with FAT32.<br />
+			  Copy contents of the directory including readme.txt to the microSD card.
+			</p>
+		</div><!-- /.block-->
+
+		<div class="block">
+		<h3>Configure the default keyboard layout</h3>
+		<p>To configure the default keyboard layout, edit keymap.txt.</p>
+
+		<table>
+			<tr>
+				<th>Text in keymap.txt</th>
+				<th>Keyboard layout</th>
+			</tr>
+			<tr>
+				<td>us</td>
+				<td>US layout</td>
+			</tr>
+			<tr>
+				<td>jp</td>
+				<td>Japanese layout</td>
+			</tr>
+		</table>
+		<p class="note">* Changing the keyboard layout after startup is also available by using KBD Command.<br/>
+		  (refer to the document below.)</p>
+		</div><!-- /.block-->
+
+
+		<div class="block">
+		<h3>Tutorial</h3>
+
+		<div>
+			<h4>I. Start IchigoJam BASIC</h4>
+			<dl>
+				<dt><img src="image/basic1.jpg" alt="" /></dt>
+				<dd>
+					<ul>
+						<li>Insert the microSD card into Raspberry Pi.</li>
+						<li>Connect display device and keyboard.</li>
+						<li>Connect USB cable to turn on the power.</li>
+					</ul>
+					<p>
+					  If the screen looks like the one on the left, it's successful!
+					</p>
+				</dd>
+			</dl>
+		</div>
+
+		<div>
+			<h4>II. Turn on the LED</h4>
+			<dl>
+				<dt><img src="image/basic2.jpg" alt="" /></dt>
+				<dd>
+					<p>Input "LED1" from keyboard and press [Enter] key.</p>
+					<p>If the Activity LED (green one) on Raspberry Pi turned on,<br/>
+					  it's successful!</p>
+				</dd>
+			</dl>
+		</div>
+
+		<div>
+			<h4>III. Turn off the LED</h4>
+			<dl>
+				<dt><img src="image/basic3.jpg" alt="" /></dt>
+				<dd>
+					<p>Input "LED0" from keyboard and press [Enter] key.</p>
+					<p>If the Activity LED (green one) on Raspberry Pi turned off,<br/>
+					  it's successful!</p>
+				</dd>
+			</dl>
+		</div>
+		
+		<div>
+		  <h4>IV. Blinking LED</h4>
+			<dl>
+				<dt><img src="image/basic4.jpg" alt="" /></dt>
+				<dd>
+					<ul>
+							<li>Input "10 LED1: WAIT30" from keyboard and press [Enter] key.</li>
+							<li>Input "20 LED0: WAIT30" from keyboard and press [Enter] key.</li>
+							<li>Input "30 GOTO10" from keyboard and press [Enter] key.</li>
+							<li>Input "RUN" from keyboard and press [Enter] key.</li>
+					</ul>
+					<p>
+					  If the Activity LED (green one) on Raspberry Pi blinking,<br/>
+					  it's successful!<br/>
+					  <br/>
+					  To stop blinking, press [Esc] key.
+					</p>
+				</dd>
+			</dl>
+		</div>
+		
+		</div><!-- /.block-->
+		
+	</div><!-- /-->
+
+	<div>
+		<h2>5. Differences from the original edition</h2>
+		<p>
+			IchigoJam BASIC RPi is ported based on version 1.2.3 of the original edition (LPC1114 edition).<br/>
+			The operation method and available commands are basically same as the original edition, <br/>
+			but the following points are different.<br/>
+			A Document of the original edition is here.
+			<a target="_blank" href="https://ichigojam.net/IchigoJam-en.html">https://ichigojam.net/IchigoJam-en.html</a>
+		</p>
+
+		<div class="block">
+			<h3>Unimplemented key operations</h3>
+			<p>Following key operations are not implemented in RPi edition</p>
+			<table id="five01">
+				<tr>
+					<th>Key</th>
+					<th>Reaction of the original edition</th>
+				</tr>
+				<tr>
+					<td>[Right Alt]</td>
+					<td>Switching Kana input mode(same as [kana])</td>
+				</tr>
+				<tr>
+					<td>[Ctrl] + [Shift]</td>
+					<td>Switching Kana input mode(same as [kana])</td>
+				</tr>
+					<tr>
+					<td>[Ctrl] + [Alt]</td>
+					<td>Switching insert mode(same as [Insert])</td>
+				</tr>
+			</table>
+		</div><!-- /.block-->
+
+		<div class="block">
+			<h3>Key operations specific for RPi edition</h3>
+			<p>Following key operations are implemented in RPi edition only</p>
+			<table id="five02">
+				<tr>
+					<th>Key</th>
+					<th>Reaction of the RPi edition</th>
+				</tr>
+				<tr>
+					<td>[Right Alt] + [K]</td>
+					<td>Switching Kana input mode(same as [kana])</td>
+				</tr>
+				<tr>
+					<td>[Ctrl] + [Shift] + [K]</td>
+					<td>Switching Kana input mode(same as [kana])</td>
+				</tr>
+				<tr>
+					<td>[Ctrl] + [Alt] + [I]</td>
+					<td>Switching insert mode(same as [Insert])</td>
+				</tr>
+			</table>
+		</div><!-- /.block-->
+
+		<div class="block">
+			<h3>Unimplemented commands</h3>
+			<p>Following commands are not implemented in RPi edition</p>
+			<table>
+				<tr>
+					<th>Command</th>
+					<th>Reaction of the original edition</th>
+					<th>Reaction of the RPi edition</th>
+				</tr>
+				<tr>
+					<td>VIDEO</td>
+					<td>Video/Display Setting</td>
+					<td>Do nothing</td>
+				</tr>
+				<tr>
+					<td>SWITCH</td>
+					<td>Change the Display</td>
+					<td>Do nothing</td>
+				</tr>
+				<tr>
+					<td>SLEEP</td>
+					<td>Enter to the system sleep mode</td>
+					<td>Do nothing</td>
+				</tr>
+				<tr>
+					<td>ANA</td>
+					<td>Return voltage of external input as a numerical value</td>
+					<td>Always returns 0</td>
+				</tr>
+				<tr>
+					<td>BEEP</td>
+					<td>Sound beep</td>
+					<td>Do nothing</td>
+				</tr>
+				<tr>
+					<td>PLAY</td>
+					<td>Play music written in MML</td>
+					<td>Do nothing</td>
+				</tr>
+				<tr>
+					<td>TEMPO</td>
+					<td>Change the tempo of music being played</td>
+					<td>Do nothing</td>
+				</tr>
+				<tr>
+					<td>SOUND</td>
+					<td>If sound is playing, return 1</td>
+					<td>Always returns 0</td>
+				</tr>
+				<tr>
+					<td>USR</td>
+					<td>Call the Machine code</td>
+					<td>Do nothing</td>
+				</tr>
+			</table>
+		</div><!-- /.block-->
+
+		<div class="block">
+			<h3>Commands specific for RPi edition</h3>
+			<p>Following commands are implemented in RPi edition only</p>
+			<table>
+				<tr>
+					<th>Command</th>
+					<th>Reaction of the RPi edition</th>
+					<th>Usage</th>
+				</tr>
+				<tr>
+					<td>KBD</td>
+					<td>Change the keyboard layout</td>
+					<td>
+						KBD 0 'Swicthing To US<br/>
+						KBD 1 'Swicthing To Japanese<br/>
+					</td>
+				</tr>
+			</table>
+		</div><!-- /.block-->
+
+		<div class="block">
+			<h3>Etc.</h3>
+			<p>In addition, there are following differences.</p>
+			<ul>
+				<li>If power is turned on without connecting the keyboard, FILE0 is automatically executed (LRUN0)</li>
+				<li>Only PWM3 and PWM4 can be used for PWM Command</li>
+				<li>IN3(OUT10) becomes a pull-up input with OUT10,-2 Command</li>
+				<li>The cursor does not blink</li>
+				<li>LED Command and OUT7 Command are independent of each other</li>
+				<li>It does not correspond to the power saving mode of WAIT Command</li>
+			</ul>
+		</div><!-- /.block-->
+
+	</div><!-- /-->
+
+	<div>
+		<h2>6. IO commands and physical pin layout</h2>
+		<p>The relationship between IN/OUT/PWM command and the physical pin<br/>
+		  where the electric current actually flows is as follows.</p>
+		<table>
+			<tr>
+				<th>Physical pin</th>
+				<th>Input Command</th>
+				<th>Output Command</th>
+				<th>PWM Command</th>
+				<th>Initial state</th>
+			</tr>
+			<tr>
+				<td>15</td>
+				<td>IN1</td>
+				<td>(OUT8)</td>
+				<td></td>
+				<td>Input(pull up)</td>
+			</tr>
+			<tr>
+				<td>13</td>
+				<td>IN2</td>
+				<td>(OUT9)</td>
+				<td></td>
+				<td>Input(open)</td>
+			</tr>
+			<tr>
+				<td>11</td>
+				<td>IN3</td>
+				<td>(OUT10)</td>
+				<td></td>
+				<td>Input(open)</td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td>IN4</td>
+				<td>(OUT11)</td>
+				<td></td>
+				<td>Input(pull up)</td>
+			</tr>
+			<tr>
+				<td>35</td>
+				<td>IN9</td>
+				<td></td>
+				<td></td>
+				<td>Input(open,fixed)</td>
+			</tr>
+			<tr>
+				<td>37</td>
+				<td>(IN5)</td>
+				<td>OUT1</td>
+				<td></td>
+				<td>Output</td>
+			</tr>
+			<tr>
+				<td>36</td>
+				<td>(IN6)</td>
+				<td>OUT2</td>
+				<td></td>
+				<td>Output</td>
+			</tr>
+			<tr>
+				<td>33</td>
+				<td>(IN7)</td>
+				<td>OUT3</td>
+				<td>PWM3</td>
+				<td>Output</td>
+			</tr>
+			<tr>
+				<td>32</td>
+				<td>(IN8)</td>
+				<td>OUT4</td>
+				<td>PWM4</td>
+				<td>Output</td>
+			</tr>
+			<tr>
+				<td>38</td>
+				<td>(IN10)</td>
+				<td>OUT5</td>
+				<td></td>
+				<td>Output</td>
+			</tr>
+			<tr>
+				<td>40</td>
+				<td>(IN11)</td>
+				<td>OUT6</td>
+				<td></td>
+				<td>Output</td>
+			</tr>
+			<tr>
+				<td>26</td>
+				<td></td>
+				<td>OUT7</td>
+				<td></td>
+				<td>Output(fixed)</td>
+			</tr>
+		</table>
+	</div><!-- /-->
+
+
+	<div>
+		<h2>7. Support</h2>
+		<p>
+		  <a target="_blank" href="https://www.facebook.com/groups/ichigojamfan/">https://www.facebook.com/groups/ichigojamfan/</a><br/>
+		  <a target="_blank" href="http://na-s.jp">http://na-s.jp</a>
+		</p>
+	</div><!-- /-->
+</div><!-- /#contents -->
+
+<div id="footer">
+	<div>
+		<p>IchigoJam is a registered trademark of jig.jp co., ltd.</p>
+		<p>Raspberry Pi is a trademark of the Raspberry Pi Foundation.</p>
+	</div>
+</div><!-- /#footer -->
+
+</body>
+</html>
+

@@ -1,0 +1,238 @@
+@charaset"UTF-8";
+
+/*==================================================================*/
+/* common css */
+/*==================================================================*/
+html{
+	height:100%;
+	}
+body{
+	margin:0;
+	padding:0;
+	height:100%;
+	line-height:1.8;
+	color:#444;
+	background:url('./image/mainvisual.png') no-repeat 50% 0 #fff;
+	font-weight:normal;font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+	font-size:16px;
+	letter-spacing:1px;
+    -webkit-text-size-adjust:100%;
+    -ms-text-size-adjust:100%;
+	}
+	
+a{color:#999;outline:none;text-decoration:none;}
+a:hover{color:#6eb92b;}
+
+img{border:none;vertical-align:bottom;}
+h1,h2,h3{font-weight:normal;}
+
+
+/* -------------------------------------------------------------- */
+/* title */
+/* -------------------------------------------------------------- */
+#title *{margin:0;padding:0;}
+
+#title{
+	margin:0 auto 1em;
+	padding:300px 0 0;
+	width:980px;
+	}
+#title h1{
+	padding:0 0 2em;
+	text-align:center;
+	}
+#title p{text-align:right;}
+#title p a{
+	font-size:14px;
+	}
+
+/* -------------------------------------------------------------- */
+/* lead */
+/* -------------------------------------------------------------- */
+#lead *{margin:0;padding:0;}
+#lead{
+	margin:0 auto 3em;
+	min-width:980px;
+	background:#fafafa;
+	}
+#lead p{
+	margin:0 auto 1em;
+	padding:5em 0 0;
+	width:980px;
+	text-align:center;
+	}
+#lead p.photo{
+	margin:0 auto 1em;
+	padding:5em 0 4em;
+	width:980px;
+	text-align:center;
+	background:url('./image/ichigojam.png') no-repeat 100% 50%;
+	letter-spacing:0;
+	}
+#lead .link{
+	padding:1em 0 3em;
+	color:#6eb92b;
+	}
+#lead .link a{
+	padding:1em 2em;
+	color:#fff;
+	background:#6eb92b;
+	border-radius:3em;
+	-webkit-border-radius:3em;
+	-moz-border-radius:3em;
+	}
+#lead .link a:hover{
+	border:1px solid #6eb92b;
+	color:#6eb92b;
+	background:#fff;
+	}
+
+/* -------------------------------------------------------------- */
+/* contents */
+/* -------------------------------------------------------------- */
+#contents *{margin:0;padding:0;}
+#contents{
+	margin:0 auto;
+	padding:0;
+	width:980px;
+	}
+#contents div{
+	margin:0 auto 6em;
+	}
+
+#contents div h2{margin:0 0 0.5em;font-size:30px;}
+
+#contents div ul{
+	margin:0 0 1em;
+	padding:0 0 0 2em;
+	}
+#contents div li{}
+
+#contents div p{margin:0 0 1em;}
+#contents div p.note{
+	padding:0 0 0 1em;
+	color:#999;
+	text-indent:-1em;
+	font-size:14px;
+	}
+
+#contents table{
+	margin:0 0 1em;
+	border-collapse:collapse;
+	width:540px;
+	text-align:left;
+	}
+#contents table th{background:#fafafa;}
+#contents table th,
+#contents table td{
+	padding:10px;
+	border: 1px solid #ccc;
+	font-size:12px;
+	}
+
+/* .block */
+#contents div .block{
+	margin:0 0 3em;
+	}
+#contents div .block h3{
+	margin:0 0 0.5em;
+	color:#6eb92b;
+	}
+#contents div .block p{padding:0 0 0 1.5em;}	
+#contents div .block p.note{margin:0 0 1em 1.5em;}
+
+#contents div .link{
+	color:#6eb92b;
+	}
+#contents div .link a{
+	padding:1em 2em;
+	color:#fff;
+	background:#6eb92b;
+	border-radius:3em;
+	-webkit-border-radius:3em;
+	-moz-border-radius:3em;
+	}
+#contents div .link a:hover{
+	border:1px solid #6eb92b;
+	color:#6eb92b;
+	background:#fff;
+	}
+
+#contents div .block ul{padding:0 0 0 3em;}
+
+/* photo */
+#contents div .block dl{
+	padding:1em 0 0;
+	}
+	/* clear hack */
+	#contents div .block dl{zoom:1;}
+	#contents div .block dl:after{content:".";clear:both;height:0;display:block;visibility:hidden;}
+	
+#contents div .block dt{
+	float:left;
+	width:410px;
+	}
+#contents div .block dd{
+	float:right;
+	width:560px;
+	}
+#contents div .block img{width:400px;}
+#contents div .block dd li{letter-spacing:0;}
+
+/* table */
+#contents .block table{margin-left:1.5em;}
+#contents #five01 th:nth-child(1),#contents #five01 td:nth-child(1){width:40%;}
+#contents #five01 th:nth-child(2),#contents #five01 td:nth-child(2){width:60%;}
+
+#contents #five02 th:nth-child(1),#contents #five02 td:nth-child(1){width:40%;}
+#contents #five02 th:nth-child(2),#contents #five02 td:nth-child(2){width:60%;}
+
+/* -------------------------------------------------------------- */
+/* download */
+/* -------------------------------------------------------------- */
+#download *{margin:0;padding:0;}
+#download{
+	margin:0 auto 4em;
+	padding:4em 0;
+	width:980px;
+	text-align:center;
+	}
+#download h3{padding:0 0 0.5em;color:#c7345d;}
+#download p{margin:0 0 1em;}
+#download ul{}
+#download li{list-style:none;}
+
+#download li a{
+	padding:1em 2em;
+	color:#fff;
+	background:#c7345d;
+	border-radius:3em;
+	-webkit-border-radius:3em;
+	-moz-border-radius:3em;
+	}
+#download li a:hover{
+	border:1px solid #c7345d;
+	color:#c7345d;
+	background:#fff;
+	}
+#download li p{padding:1.5em 0 0;}
+
+/* -------------------------------------------------------------- */
+/* footer */
+/* -------------------------------------------------------------- */
+#footer *{margin:0;padding:0;}
+#footer{
+	margin:0 auto;
+	padding:6em 0 2em;
+	min-width:980px;
+	font-size:12px;
+	background:#fafafa;
+	}
+#footer div{
+	margin:0 auto;
+	width:980px;
+	text-align:right;
+	}
+#footer p{margin:0 0 1em;}
+
+/* -------------------------------------------------------------- */
