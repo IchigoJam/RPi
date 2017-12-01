@@ -17,7 +17,7 @@
 
 <div id="title">
 	<h1>IchigoJam BASIC RPi1.2 Documents</h1>
-	<p>[2017/11/14]</p>
+	<p>[2017/12/01]</p>
 	<p><a href="index_ja.html">日本語版(Japanese Edition) &gt;</a></p>
 </div><!-- /#title -->
 
@@ -45,13 +45,15 @@
 		</p>
 		<ul>
 				<li>Raspberry Pi 3 Model B V1.2</li>
+				<li>Raspberry Pi Zero W V1.1</li>
 				<li>Raspberry Pi Zero V1.3</li>
 				<li>Raspberry Pi 2 Model B V1.2</li>
-				<li>Raspberry Pi Zero W V1.1</li>
+				<li>Raspberry Pi Model B+ V1.2</li>
+				<li>Raspberry Pi Model A+ V1.1</li>
 		</ul>
 		<p class="note">
 		  
-		  * The keyboard response of "Zero" and "Zero W" is not good for now.<br />
+		  * For some keyboards, The response of "Zero", "Zero W" and "Model A+" is not good for now.<br />
 		  However, Other than that, you can use those same as "Pi 3" and "Pi 2".
 		</p>
 	</div>
@@ -416,9 +418,48 @@
 		</table>
 	</div><!-- /-->
 
-
 	<div>
-		<h2>7. Support</h2>
+		<h2>7. Known issues and planned actions</h2>
+
+		<div class="block">
+			<h3>Known issues</h3>
+			<ul>
+				<li>[issue 1001] Home, End, Page Up, Page Down, Ins on the Numeric Keypad do not work on some keyboards.</li>
+				<li>[issue 1002] Shift, Ctrl, Alt do not work on some keyboards.</li>
+				<li>[issue 1003] Auto repeat does not work on some keyboards.</li>
+				<li>[issue 1004] Screen changes by CLS, SCROLL, POKE, COPY, CLP are not reflected until the next PRINT processing.</li>
+				<li>[issue 1005] For some keyboards, The response of "Zero", "Zero W" and "Model A+" is not good.</li>
+				<li>[issue 1006] The value of TICK and the number of screen refreshes are not synchronized.</li>
+				<li>[issue 1007] The cursor does not blink.</li>
+			</ul>
+		</div><!-- /.block-->
+		
+		<div class="block">
+			<h3>Planned actions for the next version</h3>
+			<ul>
+				<li>Fix of [issue 1001].</li>
+				<li>Fix of [issue 1002].</li>
+				<li>Fix of [issue 1003].</li>
+				<li>Fix of [issue 1004].</li>
+			</ul>
+		</div><!-- /.block-->
+		
+		<div class="block">
+			<h3>Planned actions</h3>
+			<ul>
+				<li>Improvement of screen rendering processing. (related to issue 1006, 1007)</li>
+				<li>Improvement of key input processing. (related to issue 1005)</li>
+				<li>Display related implementation. (VIDEO, SWITCH command)</li>
+				<li>Sound related implementation. (BEEP, PLAY, TEMPO, SOUND command)</li>
+				<li>Machine language related implementation. (USER command)</li>
+			</ul>
+		</div><!-- /.block-->
+
+		
+	</div><!-- /-->
+	
+	<div>
+		<h2>8. Support</h2>
 		<p>
 		  <a target="_blank" href="https://www.facebook.com/groups/ichigojamfan/">https://www.facebook.com/groups/ichigojamfan/</a><br/>
 		  <a target="_blank" href="http://na-s.jp">http://na-s.jp</a>

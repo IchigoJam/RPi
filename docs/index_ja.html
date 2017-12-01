@@ -17,7 +17,7 @@
 
 <div id="title">
 	<h1>IchigoJam BASIC RPi1.2 ドキュメント</h1>
-	<p>[2017/11/14]</p>
+	<p>[2017/12/01]</p>
 	<p><a href="index.html">English Edition(英語版) &gt;</a></p>
 </div><!-- /#title -->
 
@@ -44,11 +44,13 @@
 		</p>
 		<ul>
 				<li>Raspberry Pi 3 Model B V1.2</li>
+				<li>Raspberry Pi Zero W V1.1</li>
 				<li>Raspberry Pi Zero V1.3</li>
 				<li>Raspberry Pi 2 Model B V1.2</li>
-				<li>Raspberry Pi Zero W V1.1</li>
+				<li>Raspberry Pi Model B+ V1.2</li>
+				<li>Raspberry Pi Model A+ V1.1</li>
 		</ul>
-		<p class="note">※ Zero と Zero W については キーボードからの入力の反応がよくない現象が報告されていますが、<br />それ以外は Pi 3, Pi 2 と同様にご利用いただけます。</p>
+		<p class="note">※ Zero、Zero W と Model A+ については 一部のキーボードで、入力の反応がよくない現象が報告されていますが、<br />それ以外は Pi 3, Pi 2 と同様にご利用いただけます。</p>
 	</div>
 
 	<div>
@@ -401,7 +403,47 @@
 	</div><!-- /-->
 
 	<div>
-		<h2>7. サポート</h2>
+		<h2>7. 既知の課題と対応予定</h2>
+
+		<div class="block">
+			<h3>既知の課題</h3>
+			<ul>
+				<li>[issue 1001] 一部のキーボードでテンキーのHome,End,PageUp,PageDown,Insが効かない</li>
+				<li>[issue 1002] 一部のキーボードでShift,Ctrl,Altが効かない</li>
+				<li>[issue 1003] 一部のキーボードでオートリピートが効かない</li>
+				<li>[issue 1004] CLS,SCROLL,POKE,COPY,CLP による画面の変更が次のPRINT処理まで反映されない</li>
+				<li>[issue 1005] Zero、Zero W、Model A+ で一部のキーボードの反応がよくない</li>
+				<li>[issue 1006] TICKの値と画面のリフレッシュ回数が同期していない</li>
+				<li>[issue 1007] カーソルが点滅しない</li>
+			</ul>
+		</div><!-- /.block-->
+		
+		<div class="block">
+			<h3>次期バージョンでの対応予定</h3>
+			<ul>
+				<li>[issue 1001] の解決</li>
+				<li>[issue 1002] の解決</li>
+				<li>[issue 1003] の解決</li>
+				<li>[issue 1004] の解決</li>
+			</ul>
+		</div><!-- /.block-->
+		
+		<div class="block">
+			<h3>今後の対応予定</h3>
+			<ul>
+				<li>画面描画処理の改善(issue 1006, 1007 に関連)</li>
+				<li>キー入力処理の改善(issue 1005 に関連)</li>
+				<li>ディスプレイ関連の実装(VIDEO, SWITCHコマンド)</li>
+				<li>サウンド関連の実装(BEEP, PLAY, TEMPO, SOUNDコマンド)</li>
+				<li>マシン語関連の実装(USERコマンド)</li>
+			</ul>
+		</div><!-- /.block-->
+
+		
+	</div><!-- /-->
+	
+	<div>
+		<h2>8. サポート</h2>
 		<p>
 		  詳細は、Facebookグループ IchigoJam-FAN または ナチュラルスタイル までお問い合わせください。<br/>
 		  <a target="_blank" href="https://www.facebook.com/groups/ichigojam/">https://www.facebook.com/groups/ichigojam/</a><br/>
