@@ -17,7 +17,7 @@
 
 <div id="title">
 	<h1>IchigoJam BASIC RPi1.2 ドキュメント</h1>
-	<p>[2017/12/01]</p>
+	<p>[2017/12/06]</p>
 	<p><a href="index.html">English Edition(英語版) &gt;</a></p>
 </div><!-- /#title -->
 
@@ -63,7 +63,13 @@
 		<h2>4. 使い方</h2>
 		<div class="block">
 			<h3>インストール</h3>
-			<p>Raspberry Pi で使用する microSDメモリーカード を FAT32 でフォーマットし、<br />readme.txt を含むディレクトリの中身をコピーします。</p>
+			<p>パソコンなどを使い、Raspberry Pi で使用する microSDメモリーカード を FAT16 または FAT32 でフォーマットし、<br />readme.txt を含むディレクトリの中身をコピーします。</p>
+			<ul>
+			  <li>容量32GBまでのmicroSDメモリーカードを用意し、<a href="https://www.sdcard.org/jp/downloads/formatter_4/" target="_blank">SDメモリカードフォーマッター</a>を利用するとよいでしょう。</li>
+			  <li>対応しているファイルシステムは FAT16 と FAT32 です。</li>
+			  <li>うまく動作しない場合は、Raspberry Pi と microSDメモリーカードの相性が良くない可能性があります。<br />
+			    [<a href="https://elinux.org/RPi_SD_cards#Working_.2F_Non-working_SD_cards" target="_blank">Working / Non-working SD cards</a>]を参考に他のカードをお試しください。</li>
+			</ul>
 		</div><!-- /.block-->
 
 		<div class="block">

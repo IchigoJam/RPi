@@ -17,7 +17,7 @@
 
 <div id="title">
 	<h1>IchigoJam BASIC RPi1.2 Documents</h1>
-	<p>[2017/12/01]</p>
+	<p>[2017/12/06]</p>
 	<p><a href="index_ja.html">日本語版(Japanese Edition) &gt;</a></p>
 </div><!-- /#title -->
 
@@ -69,9 +69,15 @@
 		<div class="block">
 			<h3>Installation</h3>
 			<p>
-			  Format a microSD card with FAT32.<br />
+			  Using a PC, Format a microSD card with FAT16 or FAT32.<br />
 			  Copy contents of the directory including readme.txt to the microSD card.
 			</p>
+			<ul>
+			  <li>It's nice to prepare microSD card with capacity up to 32GB and use <a href="https://www.sdcard.org//downloads/formatter_4/" target="_blank">SD Memory Card Formatter</a>.</li>
+			  <li>Supported file systems are FAT16 and FAT32.</li>
+			  <li>If it does not work properly, the compatibility between Raspberry Pi and the microSD card may not be good.<br />
+			    Please refer to [<a href="https://elinux.org/RPi_SD_cards#Working_.2F_Non-working_SD_cards" target="_blank">Working / Non-working SD cards</a>] and try other cards.</li>
+			</ul>
 		</div><!-- /.block-->
 
 		<div class="block">
@@ -313,7 +319,7 @@
 				<li>IN3(OUT10) becomes a pull-up input with OUT10,-2 Command</li>
 				<li>The cursor does not blink</li>
 				<li>LED Command and OUT7 Command are independent of each other</li>
-				<li>It does not correspond to the power saving mode of WAIT Command</li>
+				<li>Power saving mode of WAIT command is not supported</li>
 			</ul>
 		</div><!-- /.block-->
 
