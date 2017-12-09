@@ -17,7 +17,7 @@
 
 <div id="title">
 	<h1>IchigoJam BASIC RPi1.2 Documents</h1>
-	<p>[2017/12/06]</p>
+	<p>[2017/12/09]</p>
 	<p><a href="index_ja.html">日本語版(Japanese Edition) &gt;</a></p>
 </div><!-- /#title -->
 
@@ -430,10 +430,6 @@
 		<div class="block">
 			<h3>Known issues</h3>
 			<ul>
-				<li>[issue 1001] Home, End, Page Up, Page Down, Ins on the Numeric Keypad do not work on some keyboards.</li>
-				<li>[issue 1002] Shift, Ctrl, Alt do not work on some keyboards.</li>
-				<li>[issue 1003] Auto repeat does not work on some keyboards.</li>
-				<li>[issue 1004] Screen changes by CLS, SCROLL, POKE, COPY, CLP are not reflected until the next PRINT processing.</li>
 				<li>[issue 1005] For some keyboards, The response of "Zero", "Zero W" and "Model A+" is not good.</li>
 				<li>[issue 1006] The value of TICK and the number of screen refreshes are not synchronized.</li>
 				<li>[issue 1007] The cursor does not blink.</li>
@@ -443,17 +439,15 @@
 		<div class="block">
 			<h3>Planned actions for the next version</h3>
 			<ul>
-				<li>Fix of [issue 1001].</li>
-				<li>Fix of [issue 1002].</li>
-				<li>Fix of [issue 1003].</li>
-				<li>Fix of [issue 1004].</li>
+				<li>Improvement of screen rendering processing. (related to issue 1006, 1007)</li>
+				<li>Fix of [issue 1006].</li>
+				<li>Fix of [issue 1007].</li>
 			</ul>
 		</div><!-- /.block-->
 		
 		<div class="block">
 			<h3>Planned actions</h3>
 			<ul>
-				<li>Improvement of screen rendering processing. (related to issue 1006, 1007)</li>
 				<li>Improvement of key input processing. (related to issue 1005)</li>
 				<li>Display related implementation. (VIDEO, SWITCH command)</li>
 				<li>Sound related implementation. (BEEP, PLAY, TEMPO, SOUND command)</li>
@@ -461,6 +455,35 @@
 			</ul>
 		</div><!-- /.block-->
 
+		<div class="block">
+			<h3>Fixed Issues</h3>
+			<ul>
+				<li>[issue 1001] Home, End, Page Up, Page Down, Ins on the Numeric Keypad do not work on some keyboards.</li>
+				<li>[issue 1002] Shift, Ctrl, Alt do not work on some keyboards.</li>
+				<li>[issue 1003] Auto repeat does not work on some keyboards.</li>
+				<li>[issue 1004] Screen changes by CLS, SCROLL, POKE, COPY, CLP are not reflected until the next PRINT processing.</li>
+			</ul>
+		</div><!-- /.block-->
+		
+		<div>
+			<h3>Change log</h3>
+			<dl>
+			  <dt>ver1.2.3</dt>
+			  <dd>
+			    <ul>
+			      <li>[issue 1004] has been fixed</li>
+			    </ul>
+			  </dd>
+			  <dt>ver1.2.2</dt>
+			  <dd>
+			    <ul>
+			      <li>[issue 1001] has been fixed</li>
+			      <li>[issue 1002] has been fixed</li>
+			      <li>[issue 1003] has been fixed</li>
+			    </ul>
+			  </dd>
+			</dl>
+		</div>
 		
 	</div><!-- /-->
 	
