@@ -17,7 +17,7 @@
 
 <div id="title">
 	<h1>IchigoJam BASIC RPi1.2 ドキュメント</h1>
-	<p>[2017/12/09]</p>
+	<p>[2017/12/12]</p>
 	<p><a href="index.html">English Edition(英語版) &gt;</a></p>
 </div><!-- /#title -->
 
@@ -33,7 +33,7 @@
 <div id="contents">
 	<div>
 		<h2>1. 利用条件</h2>
-		<p><a target="_blank" href="https://ichigojam.net/ichigojam-license.pdf">利用規約</a>に同意の上、ダウンロードしてください。第三者への配布には別途契約が必要となります。</p>
+		<p><a target="_blank" href="https://ichigojam.net/ichigojam-license.pdf">利用規約</a>に同意の上、ご利用ください。第三者への配布には別途契約が必要となります。</p>
 	</div>
 
 	<div>
@@ -57,10 +57,7 @@
 		<h2>3. ダウンロード</h2>
 		<p>下記よりダウンロードできます。</p>
 		<p class="link"><a href="downloads/index_ja.html">Downloads</a></p>
-	</div><!-- /-->
 
-	<div>
-		<h2>4. 使い方</h2>
 		<div class="block">
 			<h3>インストール</h3>
 			<p>パソコンなどを使い、Raspberry Pi で使用する microSDメモリーカード を FAT16 または FAT32 でフォーマットし、<br />readme.txt を含むディレクトリの中身をコピーします。</p>
@@ -73,8 +70,24 @@
 		</div><!-- /.block-->
 
 		<div class="block">
+		<h3>アップデート</h3>
+		<p>最新版への更新は下記の手順で行います。</p>
+		<ul>
+		  <li>パソコンなどを使い、microSDメモリーカード内のファイルを、任意の場所にコピーします。(バックアップ)</li>
+		  <li>ダウンロードページから、IchigoJam BASIC RPi の最新版をダウンロード・展開します。</li>
+		  <li>microSDメモリーカード内のファイルを､ダウンロード・展開して生成されたファイルで上書きします。</li>
+		  <li>filesディレクトリ, config.txt, keymap.txt をバックアップからmicroSDメモリーカードにコピー(復元)します。</li>
+		</ul>
+		</div><!-- /.block-->
+		
+	</div><!-- /-->
+	
+	<div>
+		<h2>4. 使い方</h2>
+
+		<div class="block">
 		<h3>起動時のキーボード設定</h3>
-		<p>keymap.txt で起動時のキーボードの種類を設定できます。</p>
+		<p>microSDメモリーカード内の keymap.txt で起動時のキーボードの種類を設定できます。</p>
 
 		<table>
 			<tr>
@@ -305,6 +318,7 @@
 				<li>カーソルは点滅しません</li>
 				<li>LED と OUT7 は連動しません</li>
 				<li>WAIT の省電力モードには対応していません</li>
+				<li>SAVE/LOADの入出力先はmicroSDメモリーカードのfilesディレクトリ内のファイルです(0-3,100-227)</li>
 			</ul>
 		</div><!-- /.block-->
 
