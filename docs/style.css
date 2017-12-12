@@ -9,10 +9,11 @@ html{
 body{
 	margin:0;
 	padding:0;
+	border-top:6px solid #6eb92b;
 	height:100%;
 	line-height:1.8;
 	color:#444;
-	background:url('./image/mainvisual.png') no-repeat 50% 0 #fff;
+	background:url('./image/mainvisual.png') no-repeat 50% 6px #fff;
 	font-weight:normal;font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
 	font-size:16px;
 	letter-spacing:1px;
@@ -27,6 +28,12 @@ img{border:none;vertical-align:bottom;}
 h1,h2,h3{font-weight:normal;}
 
 
+#plus{
+	border-top:6px solid #d41c5c;
+	background:url('./image/plus/mainvisual.png') no-repeat 50% 6px #fff;
+	}
+
+
 /* -------------------------------------------------------------- */
 /* title */
 /* -------------------------------------------------------------- */
@@ -34,13 +41,19 @@ h1,h2,h3{font-weight:normal;}
 
 #title{
 	margin:0 auto 1em;
-	padding:300px 0 0;
+	padding:240px 0 0;
 	width:980px;
 	}
 #title h1{
-	padding:0 0 2em;
+	padding:2em 0;
+	color:#6eb92b;
 	text-align:center;
 	}
+#plus #title h1{
+	color:#d41c5c;
+	background:url('./image/plus/plus.png') no-repeat 50% 50%;
+	}
+
 #title p{text-align:right;}
 #title p a{
 	font-size:14px;
@@ -67,6 +80,14 @@ h1,h2,h3{font-weight:normal;}
 	width:980px;
 	text-align:center;
 	background:url('./image/ichigojam.png') no-repeat 100% 50%;
+	letter-spacing:0;
+	}
+#lead p.photo_plus{
+	margin:0 auto 1em;
+	padding:5em 0 4em;
+	width:980px;
+	text-align:center;
+	background:url('./image/plus/ichigojam.png') no-repeat 100% 50%;
 	letter-spacing:0;
 	}
 #lead .link{
@@ -134,15 +155,19 @@ h1,h2,h3{font-weight:normal;}
 #contents div .block{
 	margin:0 0 3em;
 	}
-#contents div .block h3{
+#contents div h3{
 	margin:0 0 0.5em;
 	color:#6eb92b;
 	}
+#plus #contents div h3{color:#d41c5c;}
+
+
 #contents div .block p{padding:0 0 0 1.5em;}	
 #contents div .block p.note{margin:0 0 1em 1.5em;}
 
 #contents div .link{
 	color:#6eb92b;
+	margin-bottom:50px;
 	}
 #contents div .link a{
 	padding:1em 2em;
