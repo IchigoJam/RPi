@@ -58,6 +58,7 @@ h1,h2,h3{font-weight:normal;}
 #title p a{
 	font-size:14px;
 	}
+#title p.back{text-align:left;}
 
 /* -------------------------------------------------------------- */
 /* lead */

@@ -11,13 +11,14 @@
 	<meta property="og:locale" content="en_US" />
 	<meta property="og:image" content="https://ichigojam.github.io/RPi/image/fb.png" />
 	<meta property="og:site_name" content="IchigoJam BASIC RPi1.2" />
-	<link rel="stylesheet" type="text/css" href="./style.css" />
+	<link rel="stylesheet" type="text/css" href="./style.css?1" />
 </head>
 <body>
 
 <div id="title">
+	<p class="back"><a href="http://na-s.jp/IJBRPi/">&lt; IchigoJam BASIC RPi/RPi+</a></p>
 	<h1>IchigoJam BASIC RPi1.2 Documents</h1>
-	<p>[2017/12/14]</p>
+	<p>[2017/12/15]</p>
 	<p><a href="index_ja.html">日本語版(Japanese Edition) &gt;</a></p>
 </div><!-- /#title -->
 
@@ -447,6 +448,7 @@
 				<li>[issue 1005] For some keyboards, The response of "Zero", "Zero W" and "Model A+" is not good.</li>
 				<li>[issue 1006] The value of TICK and the number of screen refreshes are not synchronized.</li>
 				<li>[issue 1007] The cursor does not blink.</li>
+				<li>[issue 1008] I2CW returns zero (success), in situations where non-zero (failure) should be returned, such as access to a nonexistent address.</li>
 			</ul>
 		</div><!-- /.block-->
 		
