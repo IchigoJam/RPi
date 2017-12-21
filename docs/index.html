@@ -342,101 +342,146 @@
 
 	<div>
 		<h2>6. IO commands and physical pin layout</h2>
-		<p>The relationship between IN/OUT/PWM command and the physical pin<br/>
-		  where the electric current actually flows is as follows.</p>
-		<table>
-			<tr>
-				<th>Physical pin</th>
-				<th>Input Command</th>
-				<th>Output Command</th>
-				<th>PWM Command</th>
-				<th>Initial state</th>
-			</tr>
-			<tr>
-				<td>15</td>
-				<td>IN1</td>
-				<td>(OUT8)</td>
-				<td></td>
-				<td>Input(pull up)</td>
-			</tr>
-			<tr>
-				<td>13</td>
-				<td>IN2</td>
-				<td>(OUT9)</td>
-				<td></td>
-				<td>Input(open)</td>
-			</tr>
-			<tr>
-				<td>11</td>
-				<td>IN3</td>
-				<td>(OUT10)</td>
-				<td></td>
-				<td>Input(open)</td>
-			</tr>
-			<tr>
-				<td>7</td>
-				<td>IN4</td>
-				<td>(OUT11)</td>
-				<td></td>
-				<td>Input(pull up)</td>
-			</tr>
-			<tr>
-				<td>35</td>
-				<td>IN9</td>
-				<td></td>
-				<td></td>
-				<td>Input(open,fixed)</td>
-			</tr>
-			<tr>
-				<td>37</td>
-				<td>(IN5)</td>
-				<td>OUT1</td>
-				<td></td>
-				<td>Output</td>
-			</tr>
-			<tr>
-				<td>36</td>
-				<td>(IN6)</td>
-				<td>OUT2</td>
-				<td></td>
-				<td>Output</td>
-			</tr>
-			<tr>
-				<td>33</td>
-				<td>(IN7)</td>
-				<td>OUT3</td>
-				<td>PWM3</td>
-				<td>Output</td>
-			</tr>
-			<tr>
-				<td>32</td>
-				<td>(IN8)</td>
-				<td>OUT4</td>
-				<td>PWM4</td>
-				<td>Output</td>
-			</tr>
-			<tr>
-				<td>38</td>
-				<td>(IN10)</td>
-				<td>OUT5</td>
-				<td></td>
-				<td>Output</td>
-			</tr>
-			<tr>
-				<td>40</td>
-				<td>(IN11)</td>
-				<td>OUT6</td>
-				<td></td>
-				<td>Output</td>
-			</tr>
-			<tr>
-				<td>26</td>
-				<td></td>
-				<td>OUT7</td>
-				<td></td>
-				<td>Output(fixed)</td>
-			</tr>
-		</table>
+
+		<div class="block">
+			<h3>IN/OUT/PWM</h3>
+			<p>The relationship between IN/OUT/PWM command and the physical pin<br/>
+			  where the electric current actually flows is as follows.</p>
+			<table>
+				<tr>
+					<th>Physical pin</th>
+					<th>Input Command</th>
+					<th>Output Command</th>
+					<th>PWM Command</th>
+					<th>Initial state</th>
+				</tr>
+				<tr>
+					<td>15</td>
+					<td>IN1</td>
+					<td>(OUT8)</td>
+					<td></td>
+					<td>Input(pull up)</td>
+				</tr>
+				<tr>
+					<td>13</td>
+					<td>IN2</td>
+					<td>(OUT9)</td>
+					<td></td>
+					<td>Input(open)</td>
+				</tr>
+				<tr>
+					<td>11</td>
+					<td>IN3</td>
+					<td>(OUT10)</td>
+					<td></td>
+					<td>Input(open)</td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>IN4</td>
+					<td>(OUT11)</td>
+					<td></td>
+					<td>Input(pull up)</td>
+				</tr>
+				<tr>
+					<td>35</td>
+					<td>IN9</td>
+					<td></td>
+					<td></td>
+					<td>Input(open,fixed)</td>
+				</tr>
+				<tr>
+					<td>37</td>
+					<td>(IN5)</td>
+					<td>OUT1</td>
+					<td></td>
+					<td>Output</td>
+				</tr>
+				<tr>
+					<td>36</td>
+					<td>(IN6)</td>
+					<td>OUT2</td>
+					<td></td>
+					<td>Output</td>
+				</tr>
+				<tr>
+					<td>33</td>
+					<td>(IN7)</td>
+					<td>OUT3</td>
+					<td>PWM3</td>
+					<td>Output</td>
+				</tr>
+				<tr>
+					<td>32</td>
+					<td>(IN8)</td>
+					<td>OUT4</td>
+					<td>PWM4</td>
+					<td>Output</td>
+				</tr>
+				<tr>
+					<td>38</td>
+					<td>(IN10)</td>
+					<td>OUT5</td>
+					<td></td>
+					<td>Output</td>
+				</tr>
+				<tr>
+					<td>40</td>
+					<td>(IN11)</td>
+					<td>OUT6</td>
+					<td></td>
+					<td>Output</td>
+				</tr>
+				<tr>
+					<td>26</td>
+					<td></td>
+					<td>OUT7</td>
+					<td></td>
+					<td>Output(fixed)</td>
+				</tr>
+			</table>
+		</div><!-- /.block-->
+
+		<div class="block">
+			<h3>I2C</h3>
+			<p>The physical pin where the electric signal actually flows<br/>
+			  by using I2CW/I2CR command is as follows.</p>
+			<table>
+				<tr>
+					<th>Physical pin</th>
+					<th>function</th>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>SDA</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>SCL</td>
+				</tr>
+			</table>
+		</div><!-- /.block-->
+		
+		<div class="block">
+			<h3>UART</h3>
+			<p>The physical pin where the electric signal actually flows<br/>
+			  when communicate using UART is as follows.</p>
+			<table>
+				<tr>
+					<th>Physical pin</th>
+					<th>function</th>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td>TXD</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>RXD</td>
+				</tr>
+			</table>
+		</div><!-- /.block-->
+		
 	</div><!-- /-->
 
 	<div>
