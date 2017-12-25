@@ -332,7 +332,6 @@
 				<li>If power is turned on without connecting the keyboard, FILE0 is automatically executed (LRUN0)</li>
 				<li>Only PWM3 and PWM4 can be used for PWM Command</li>
 				<li>IN3(OUT10) becomes a pull-up input with OUT10,-2 Command</li>
-				<li>The cursor does not blink</li>
 				<li>LED Command and OUT7 Command are independent of each other</li>
 				<li>Power saving mode of WAIT command is not supported</li>
 				<li>The input/output destination of SAVE/LOAD is the file in the files directory of the microSD card (0-3, 100-227).</li>
@@ -492,20 +491,15 @@
 			<h3>Known issues</h3>
 			<ul>
 				<li>[issue 1005] For some keyboards, The response of "Zero", "Zero W" and "Model A+" is not good.</li>
-				<li>[issue 1006] The value of TICK and the number of screen refreshes are not synchronized.</li>
-				<li>[issue 1007] The cursor does not blink.</li>
 				<li>[issue 1008] I2CW returns zero (success), in situations where non-zero (failure) should be returned, such as access to a nonexistent address.</li>
 			</ul>
 		</div><!-- /.block-->
 		
-		<div class="block">
+		<!-- div class="block">
 			<h3>Planned actions for the next version</h3>
 			<ul>
-				<li>Improvement of screen rendering processing. (related to issue 1006, 1007)</li>
-				<li>Fix of [issue 1006].</li>
-				<li>Fix of [issue 1007].</li>
 			</ul>
-		</div><!-- /.block-->
+		</div --><!-- /.block-->
 		
 		<div class="block">
 			<h3>Planned actions</h3>
@@ -520,16 +514,26 @@
 		<div class="block">
 			<h3>Fixed Issues</h3>
 			<ul>
-				<li>[issue 1001] Home, End, Page Up, Page Down, Ins on the Numeric Keypad do not work on some keyboards.</li>
-				<li>[issue 1002] Shift, Ctrl, Alt do not work on some keyboards.</li>
-				<li>[issue 1003] Auto repeat does not work on some keyboards.</li>
+				<li>[issue 1007] The cursor does not blink.</li>
+				<li>[issue 1006] The value of TICK and the number of screen refreshes are not synchronized.</li>
 				<li>[issue 1004] Screen changes by CLS, SCROLL, POKE, COPY, CLP are not reflected until the next PRINT processing.</li>
+				<li>[issue 1003] Auto repeat does not work on some keyboards.</li>
+				<li>[issue 1002] Shift, Ctrl, Alt do not work on some keyboards.</li>
+				<li>[issue 1001] Home, End, Page Up, Page Down, Ins on the Numeric Keypad do not work on some keyboards.</li>
 			</ul>
 		</div><!-- /.block-->
 		
 		<div>
 			<h3>Change log</h3>
 			<dl>
+			  <dt>ver1.2.4</dt>
+			  <dd>
+			    <ul>
+			      <li>[issue 1007] has been fixed</li>
+			      <li>[issue 1006] has been fixed</li>
+			      <li>Screen rendering processing has been improved.(related to issue 1006, 1007)</li>
+			    </ul>
+			  </dd>
 			  <dt>ver1.2.3</dt>
 			  <dd>
 			    <ul>
@@ -539,9 +543,9 @@
 			  <dt>ver1.2.2</dt>
 			  <dd>
 			    <ul>
-			      <li>[issue 1001] has been fixed</li>
-			      <li>[issue 1002] has been fixed</li>
 			      <li>[issue 1003] has been fixed</li>
+			      <li>[issue 1002] has been fixed</li>
+			      <li>[issue 1001] has been fixed</li>
 			    </ul>
 			  </dd>
 			</dl>
