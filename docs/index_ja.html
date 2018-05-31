@@ -18,7 +18,7 @@
 <div id="title">
 	<p class="back"><a href="http://na-s.jp/IJBRPi/index_ja.html">&lt; IchigoJam BASIC RPi/RPi+</a></p>
 	<h1>IchigoJam BASIC RPi1.2 ドキュメント</h1>
-	<p>[2018/04/24]</p>
+	<p>[2018/06/01]</p>
 	<p><a href="index.html">English Edition(英語版) &gt;</a></p>
 </div><!-- /#title -->
 
@@ -74,6 +74,7 @@
 		<div class="block">
 		<h3>アップデート</h3>
 		<p>最新版への更新は下記の手順で行います。</p>
+		<p class="note">※ ver1.2.5でEEPROMに対応するためSAVE,LOADコマンドの仕様を変更したため、アップデート時にfilesディレクトリ内のファイル名の調整が必要になる場合があります。詳しくは 「<a href="#save_load_specification">SAVE/LOADの出力先</a>」 をご覧ください。</p>
 		<ul>
 		  <li>パソコンなどを使い、microSDメモリーカード内のファイルを、任意の場所にコピーします。(バックアップ)</li>
 		  <li>ダウンロードページから、IchigoJam BASIC RPi の最新版をダウンロード・展開します。</li>
@@ -175,10 +176,11 @@
 	<div>
 		<h2>5. オリジナル版との相違点</h2>
 		<p>
-			IchigoJam BASIC RPi は オリジナル版(LPC1114版)の 1.2.3 を元に移植されています。<br/>
+			IchigoJam BASIC RPi は オリジナル版(LPC1114版)の 1.2.4(1.2b56)(※) を元に移植されています。<br/>
 			操作方法や利用可能なコマンドは基本的にオリジナル版と同じですが、下記の点が異なります。<br/>
 			オリジナル版のドキュメントはこちらです。
 			<a target="_blank" href="https://ichigojam.net/IchigoJam-1.2.html">https://ichigojam.net/IchigoJam-1.2.html</a>
+			<p class="note">※ ver1.2.5以降。ver1.2.4以前はLPC1114版の1.2.3をベースに移植。</p>
 		</p>
 
 		<div class="block">
@@ -188,10 +190,6 @@
 				<tr>
 					<th>キー</th>
 					<th>オリジナル版の動作</th>
-				</tr>
-				<tr>
-					<td>[右Alt]</td>
-					<td>カナ入力モード切り替え([カタカナ]と同じ)</td>
 				</tr>
 				<tr>
 					<td>[Ctrl] + [Shift]</td>
@@ -211,10 +209,6 @@
 				<tr>
 					<th>キー</th>
 					<th>RPi版の動作</th>
-				</tr>
-				<tr>
-					<td>[右Alt] + [K]</td>
-					<td>カナ入力モード切り替え([カタカナ]と同じ)</td>
 				</tr>
 				<tr>
 					<td>[Ctrl] + [Shift] + [K]</td>
@@ -237,11 +231,6 @@
 					<th>RPi版の動作</th>
 				</tr>
 				<tr>
-					<td>VIDEO</td>
-					<td>画面の設定</td>
-					<td>なにもしない</td>
-				</tr>
-				<tr>
 					<td>SWITCH</td>
 					<td>ディスプレイの切り替え</td>
 					<td>なにもしない</td>
@@ -256,37 +245,12 @@
 					<td>外部入力の電圧を数値で返す</td>
 					<td>常に0を返す</td>
 				</tr>
-				<tr>
-					<td>BEEP</td>
-					<td>BEEPを鳴らす</td>
-					<td>なにもしない</td>
-				</tr>
-				<tr>
-					<td>PLAY</td>
-					<td>MMLで記述した音楽を再生する</td>
-					<td>なにもしない</td>
-				</tr>
-				<tr>
-					<td>TEMPO</td>
-					<td>再生中の音楽のテンポを変更する</td>
-					<td>なにもしない</td>
-				</tr>
-				<tr>
-					<td>SOUND</td>
-					<td>音が再生中なら1を返す</td>
-					<td>常に0を返す</td>
-				</tr>
-				<tr>
-					<td>USR</td>
-					<td>マシン語呼び出し</td>
-					<td>なにもしない</td>
-				</tr>
 			</table>
 		</div><!-- /.block-->
 
 		<div class="block">
 			<h3>RPi版専用のコマンド</h3>
-			<p>下記のコマンドはRPi版にだけ実装されています</p>
+			<p>下記のコマンドはRPi版にだけ実装されています(※1)</p>
 			<table>
 				<tr>
 					<th>コマンド</th>
@@ -295,13 +259,37 @@
 				</tr>
 				<tr>
 					<td>KBD</td>
-					<td>キーボードのキーマップの切り替え</td>
+					<td>キーボードのキーマップの切り替え(※2)</td>
 					<td>
 						KBD 0 'USキーボードに切り替え<br/>
 						KBD 1 'JPキーボードに切り替え<br/>
 					</td>
 				</tr>
+				<tr>
+					<td>IOT.IN</td>
+					<td>
+					  sakura.io から I2C で数値を受信する
+					</td>
+					<td>
+						?IOT.IN() '受信した数値を表示<br/>
+					</td>
+				</tr>
+				<tr>
+					<td>IOT.OUT</td>
+					<td>
+					  sakura.io に I2C で数値を送信する
+					</td>
+					<td>
+						IOT.OUT 111 '111を送信<br/>
+					</td>
+				</tr>
 			</table>
+			<p class="note">
+			  ※1 IOT.INとIOT.OUTは、β版でLPC1114版にも実装されています。
+			</p>
+			<p class="note">
+			  ※2 ver1.2.5以降、KBDコマンドで keymap.txt にも設定が保存されます。
+			</p>
 			<p class="note">
 			  ※ LANG が返す数値とKBDで設定する数値は違うものです。<br/>
 			  LANG は使用中のIchigoJamでカナ入力を有効にしたとき表示されるフォントの言語の番号を返します。<br/>
@@ -311,6 +299,41 @@
 		</div><!-- /.block-->
 
 		<div class="block">
+			<a id="save_load_specification"></a>
+			<h3>SAVE/LOADの入出力先</h3>
+			<p>SAVE, LOAD コマンドによるプログラムの保存先は下記のようになります。<br/>
+			  ver1.2.5で EEPROMに対応するため仕様を変更しました。<br/>
+			  ver1.2.4以前からver1.2.5以降にアップデートするとき、<br/>
+			  作成済みのプログラムを引き継ぐには microSDメモリーカードの files ディレクトリ内のファイル名を調整してください。
+			</p>
+			<table>
+				<tr>
+					<th></th>
+					<th>microSDメモリーカード(filesディレクトリ内)</th>
+					<th>EEPROM</th>
+				</tr>
+				<tr>
+					<td>ver1.2.4以前</td>
+					<td>
+					  0 ～ 3, 100 ～ 227 (*.bin)
+					</td>
+					<td>
+					  なし
+					</td>
+				</tr>
+				<tr>
+					<td>ver1.2.5以降</td>
+					<td>
+					  0 ～ 99 (*.bin)
+					</td>
+					<td>
+					  100 ～ 227
+					</td>
+				</tr>
+			</table>
+		</div><!-- /.block-->
+		
+		<div class="block">
 			<h3>その他</h3>
 			<p>その他、下記の相違点があります。</p>
 			<ul>
@@ -319,7 +342,9 @@
 				<li>IN3(OUT10)も OUT10,-2 でプルアップ入力になります</li>
 				<li>LED と OUT7 は連動しません</li>
 				<li>WAIT の省電力モードには対応していません</li>
-				<li>SAVE/LOADの入出力先はmicroSDメモリーカードのfilesディレクトリ内のファイルです(0-3,100-227)</li>
+				<li>パラメータなしの FILES コマンドで FILES20 相当の動作をします(ver1.2.5以降)</li>
+				<li>VIDEO0 のクロックダウンには対応していません(ver1.2.5以降)</li>
+				<li>USR コマンドは、Pi/Pi Zero系 では Thumb命令セット、Pi 2/Pi 3系では Thumb2命令セットに対応しています。(ver1.2.5以降)</li>
 			</ul>
 		</div><!-- /.block-->
 
@@ -423,6 +448,13 @@
 					<td></td>
 					<td>出力(固定)</td>
 				</tr>
+				<tr>
+					<td>29</td>
+					<td></td>
+					<td>SND(ver1.2.5以降)</td>
+					<td></td>
+					<td>出力(固定)</td>
+				</tr>
 			</table>
 		</div><!-- /.block-->
 
@@ -492,9 +524,6 @@
 			<h3>今後の対応予定</h3>
 			<ul>
 				<li>キー入力処理の改善(issue 1005 に関連)</li>
-				<li>ディスプレイ関連の実装(VIDEO, SWITCHコマンド)</li>
-				<li>サウンド関連の実装(BEEP, PLAY, TEMPO, SOUNDコマンド)</li>
-				<li>マシン語関連の実装(USRコマンド)</li>
 			</ul>
 		</div><!-- /.block-->
 
@@ -513,13 +542,40 @@
 		<div>
 			<h3>更新履歴</h3>
 			<dl>
-			  <dt>ver1.2.4.fw-5db8e4e</dt>
+			  <dt>[2018/06/01] ver1.2.5</dt>
+			  <dd>
+			    <ul>
+			      <li>sakura.io に対応(IOT.IN, IOT.OUTコマンド)</li>
+			      <li>ディスプレイ関連の機能に対応(VIDEOコマンド)</li>
+			      <li>サウンド関連の機能に対応(BEEP, PLAY, TEMPO, SOUNDコマンド)</li>
+			      <li>マシン語関連の機能に対応(USRコマンド)</li>
+			      <li>EEPROMに対応し、プログラムの保存先を変更(SAVE, LOADコマンド)</li>
+			      <li>パラメータなしの FILESコマンドの動作を変更(FILES3相当からFILES20相当に)</li>
+			      <li>KBDコマンドで keymap.txt にも設定を保存するように変更</li>
+			      <li>フォントのアンチエイリアスを無効化(config.txt に scaling_kernel=8 を追加)</li>
+			      <li>LPC1114版の1.2.4(1.2b56)での仕様変更を取り込み
+				<ul>
+				  <li>FILES0,0でファイル0のみ表示するように変更</li>
+				  <li>エラーメッセージの抑制をOK0からOK2に変更</li>
+				  <li>コマンドの空白を完全に無視するように変更</li>
+				  <li>BPSの第二パラメータで I2C の通信速度を設定可能に ex)BPS0,100 '100kHzに設定</li>
+				  <li>[右Alt] + [K] によるカナ入力切り替えを廃止</li>
+				  <li>[無変換], [左Alt], [右Alt] の動作を統一</li>
+				  <li>[Alt] + [W] で [Alt] + [0] と同じ動作をするように変更</li>
+				  <li>[Alt] + [X] で [Alt] + [1] と同じ動作をするように変更</li>
+				  <li>[Alt] + [Y] で [Alt] + [2] と同じ動作をするように変更</li>
+				  <li>[Alt] + [Z] で [Alt] + [3] と同じ動作をするように変更</li>
+				</ul>
+			      </li>
+			    </ul>
+			  </dd>
+			  <dt>[2018/04/24] ver1.2.4.fw-5db8e4e</dt>
 			  <dd>
 			    <ul>
 			      <li>ファームウエアを Raspberry Pi 3 Model B+ に対応したものに更新しました</li>
 			    </ul>
 			  </dd>
-			  <dt>ver1.2.4</dt>
+			  <dt>[2017/12/25] ver1.2.4</dt>
 			  <dd>
 			    <ul>
 			      <li>[issue 1007] を解決しました</li>
@@ -527,7 +583,7 @@
 			      <li>画面描画処理を改善しました(issue 1006, 1007 に関連)</li>
 			    </ul>
 			  </dd>
-			  <dt>ver1.2.3</dt>
+			  <dt>[2017/12/09] ver1.2.3</dt>
 			  <dd>
 			    <ul>
 			      <li>[issue 1004] を解決しました</li>
