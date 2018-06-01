@@ -283,14 +283,26 @@
 				</tr>
 				<tr>
 					<td>IoT.IN</td>
-					<td>Receive numerical values from sakura.io with I2C</td>
+					<td>
+					  Receive numerical values from sakura.io with I2C
+					  <ul>
+					    <li>Receive from all channels</li>
+					    <li>Regardless of the transmission data type, the lower 2 bytes are handled as 16 bit integer with sign</li>
+					  </ul>
+					</td>
 					<td>
                                                ?IoT.IN() 'Display received numerical value<br/>
 					</td>
 				</tr>
 				<tr>
 					<td>IoT.OUT</td>
-					<td>Send numerical value to sakura.io with I2C</td>
+					<td>
+					  Send numerical value to sakura.io with I2C
+					  <ul>
+					    <li>Send on channel 0</li>
+					    <li>The data type is an unsigned 64 bit integer. (L, 0x4c)</li>
+					  </ul>
+					</td>
 					<td>
                                                IoT.OUT 111 'Send 111<br/>
 					</td>
