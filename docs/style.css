@@ -244,6 +244,17 @@ h1,h2,h3{font-weight:normal;}
 #download li p{padding:1.5em 0 0;}
 
 /* -------------------------------------------------------------- */
+/* archive */
+/* -------------------------------------------------------------- */
+#archive *{margin:0;padding:0;}
+#archive{
+	margin:0 auto 4em;
+	width:880px;
+	}
+#archive h3{padding:0 0 0.5em;color:#c7345d;}
+#archive li{list-style:none;}
+
+/* -------------------------------------------------------------- */
 /* footer */
 /* -------------------------------------------------------------- */
 #footer *{margin:0;padding:0;}

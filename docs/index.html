@@ -18,7 +18,7 @@
 <div id="title">
 	<p class="back"><a href="http://na-s.jp/IJBRPi/">&lt; IchigoJam BASIC RPi/RPi+</a></p>
 	<h1>IchigoJam BASIC RPi1.2 Documents</h1>
-	<p>[2018/04/24]</p>
+	<p>[2018/06/01]</p>
 	<p><a href="index_ja.html">日本語版(Japanese Edition) &gt;</a></p>
 </div><!-- /#title -->
 
@@ -82,6 +82,7 @@
 		<div class="block">
 		<h3>Update</h3>
 		<p>To update to the latest version, follow the procedure below.</p>
+		<p class="note">* Since updating the SAVE and LOAD command specifications to support EEPROM with ver1.2.5, it may be necessary to adjust the file name in the &quot;files&quot; directory at the time of update. Please see &quot;<a href="#save_load_specification">SAVE/LOAD Destination</a>&quot; for details.</p>
 		<ul>
 		  <li>Using a PC, copy files in the microSD memory card to the desired location.(backup)</li>
 		  <li>Download and unpack the latest version of IchigoJam BASIC RPi from the download page.</li>
@@ -113,7 +114,7 @@
 				<td>Japanese layout</td>
 			</tr>
 		</table>
-		<p class="note">* Changing the keyboard layout after startup is also available by using KBD Command.<br/>
+		<p class="note">* Changing the keyboard layout after startup is also available by using KBD command.<br/>
 		  (refer to the document below.)</p>
 		</div><!-- /.block-->
 
@@ -190,11 +191,12 @@
 	<div>
 		<h2>5. Differences from the original edition</h2>
 		<p>
-			IchigoJam BASIC RPi is ported based on version 1.2.3 of the original edition (LPC1114 edition).<br/>
+			IchigoJam BASIC RPi is ported based on version 1.2.4(1.2b56)(*) of the original edition (LPC1114 edition).<br/>
 			The operation method and available commands are basically same as the original edition, <br/>
 			but the following points are different.<br/>
 			A Document of the original edition is here.
 			<a target="_blank" href="https://ichigojam.net/IchigoJam-en.html">https://ichigojam.net/IchigoJam-en.html</a>
+			<p class="note">* ver1.2.5 or later. Before ver1.2.4, ported based on ver1.2.3 of LPC1114 edition.</p>
 		</p>
 
 		<div class="block">
@@ -204,10 +206,6 @@
 				<tr>
 					<th>Key</th>
 					<th>Reaction of the original edition</th>
-				</tr>
-				<tr>
-					<td>[Right Alt]</td>
-					<td>Switching Kana input mode(same as [kana])</td>
 				</tr>
 				<tr>
 					<td>[Ctrl] + [Shift]</td>
@@ -227,10 +225,6 @@
 				<tr>
 					<th>Key</th>
 					<th>Reaction of the RPi edition</th>
-				</tr>
-				<tr>
-					<td>[Right Alt] + [K]</td>
-					<td>Switching Kana input mode(same as [kana])</td>
 				</tr>
 				<tr>
 					<td>[Ctrl] + [Shift] + [K]</td>
@@ -253,11 +247,6 @@
 					<th>Reaction of the RPi edition</th>
 				</tr>
 				<tr>
-					<td>VIDEO</td>
-					<td>Video/Display Setting</td>
-					<td>Do nothing</td>
-				</tr>
-				<tr>
 					<td>SWITCH</td>
 					<td>Change the Display</td>
 					<td>Do nothing</td>
@@ -272,37 +261,12 @@
 					<td>Return voltage of external input as a numerical value</td>
 					<td>Always returns 0</td>
 				</tr>
-				<tr>
-					<td>BEEP</td>
-					<td>Sound beep</td>
-					<td>Do nothing</td>
-				</tr>
-				<tr>
-					<td>PLAY</td>
-					<td>Play music written in MML</td>
-					<td>Do nothing</td>
-				</tr>
-				<tr>
-					<td>TEMPO</td>
-					<td>Change the tempo of music being played</td>
-					<td>Do nothing</td>
-				</tr>
-				<tr>
-					<td>SOUND</td>
-					<td>If sound is playing, return 1</td>
-					<td>Always returns 0</td>
-				</tr>
-				<tr>
-					<td>USR</td>
-					<td>Call the Machine code</td>
-					<td>Do nothing</td>
-				</tr>
 			</table>
 		</div><!-- /.block-->
 
 		<div class="block">
 			<h3>Commands specific for RPi edition</h3>
-			<p>Following commands are implemented in RPi edition only</p>
+			<p>Following commands are implemented in RPi edition only(*1)</p>
 			<table>
 				<tr>
 					<th>Command</th>
@@ -311,13 +275,33 @@
 				</tr>
 				<tr>
 					<td>KBD</td>
-					<td>Change the keyboard layout</td>
+					<td>Change the keyboard layout(*2)</td>
 					<td>
 						KBD 0 'Swicthing To US<br/>
 						KBD 1 'Swicthing To Japanese<br/>
 					</td>
 				</tr>
+				<tr>
+					<td>IOT.IN</td>
+					<td>Receive numerical values from sakura.io with I2C</td>
+					<td>
+                                               ?IOT.IN() 'Display received numerical value<br/>
+					</td>
+				</tr>
+				<tr>
+					<td>IOT.OUT</td>
+					<td>Send numerical value to sakura.io with I2C</td>
+					<td>
+                                               IOT.OUT 111 'Send 111<br/>
+					</td>
+				</tr>
 			</table>
+			<p class="note">
+			  *1 IOT.IN and IOT.OUT are implemented in LPC1114 edition in beta version.
+			</p>
+			<p class="note">
+			  *2 From ver1.2.5, the setting is saved in keymap.txt with the KBD command.
+			</p>
 			<p class="note">
 			  * The numerical value returned by LANG and the numerical value set by KBD are different.<br/>
 			  LANG returns the language number of the font to be displayed when enabling Kana input with IchigoJam in use.<br/>
@@ -326,15 +310,51 @@
 		</div><!-- /.block-->
 
 		<div class="block">
+			<a id="save_load_specification"></a>
+			<h3>SAVE/LOAD Destination</h3>
+			<p>The save destination of the program by the SAVE, LOAD command is as follows.<br/>
+			  With ver1.2.5, we changed the specification to support EEPROM.<br/>
+			  When updating from ver1.2.4 or earlier to ver1.2.5 or later, adjust the file name in the &quot;files&quot; directory of the microSD card to take over the created program.			  
+			</p>
+			<table>
+				<tr>
+					<th></th>
+					<th>microSD card(In the &quot;files&quot; directory)</th>
+					<th>EEPROM</th>
+				</tr>
+				<tr>
+					<td>ver1.2.4 or earier</td>
+					<td>
+					  0 to 3 and 100 to 227 (*.bin)
+					</td>
+					<td>
+					  [Not supported]
+					</td>
+				</tr>
+				<tr>
+					<td>ver1.2.5 or later</td>
+					<td>
+					  0 to 99 (*.bin)
+					</td>
+					<td>
+					  100 to 227
+					</td>
+				</tr>
+			</table>
+		</div><!-- /.block-->
+		
+		<div class="block">
 			<h3>Etc.</h3>
 			<p>In addition, there are following differences.</p>
 			<ul>
 				<li>If power is turned on without connecting the keyboard, FILE0 is automatically executed (LRUN0)</li>
-				<li>Only PWM3 and PWM4 can be used for PWM Command</li>
-				<li>IN3(OUT10) becomes a pull-up input with OUT10,-2 Command</li>
-				<li>LED Command and OUT7 Command are independent of each other</li>
+				<li>Only PWM3 and PWM4 can be used for PWM command</li>
+				<li>IN3(OUT10) becomes a pull-up input with OUT10,-2 command</li>
+				<li>LED command and OUT7 command are independent of each other</li>
 				<li>Power saving mode of WAIT command is not supported</li>
-				<li>The input/output destination of SAVE/LOAD is the file in the files directory of the microSD card (0-3, 100-227).</li>
+				<li>With the FILES command without parameters, It behaves equivalent to FILES20 (ver1.2.5 or later)</li>
+				<li>Clock down capability of VIDEO0 command is not supported (ver1.2.5 or later)</li>
+				<li>USR command supports Thumb instruction set for Pi / Pi Zero series and Thumb 2 instruction set for Pi 2 / Pi 3 series (ver1.2.5 or later)</li>
 			</ul>
 		</div><!-- /.block-->
 
@@ -350,9 +370,9 @@
 			<table>
 				<tr>
 					<th>Physical pin</th>
-					<th>Input Command</th>
-					<th>Output Command</th>
-					<th>PWM Command</th>
+					<th>Input command</th>
+					<th>Output command</th>
+					<th>PWM command</th>
 					<th>Initial state</th>
 				</tr>
 				<tr>
@@ -439,6 +459,13 @@
 					<td></td>
 					<td>Output(fixed)</td>
 				</tr>
+				<tr>
+					<td>29</td>
+					<td></td>
+					<td>SND(ver1.2.5 or later)</td>
+					<td></td>
+					<td>Output(fixed)</td>
+				</tr>
 			</table>
 		</div><!-- /.block-->
 
@@ -510,9 +537,6 @@
 			<h3>Planned actions</h3>
 			<ul>
 				<li>Improvement of key input processing. (related to issue 1005)</li>
-				<li>Display related implementation. (VIDEO, SWITCH command)</li>
-				<li>Sound related implementation. (BEEP, PLAY, TEMPO, SOUND command)</li>
-				<li>Machine language related implementation. (USR command)</li>
 			</ul>
 		</div><!-- /.block-->
 
@@ -531,13 +555,40 @@
 		<div>
 			<h3>Change log</h3>
 			<dl>
-			  <dt>ver1.2.4.fw-5db8e4e</dt>
+			  <dt>[2018/06/01] ver1.2.5</dt>
+			  <dd>
+			    <ul>
+			      <li>sakura.io was supported(IOT.IN, IOT.OUT command)</li>
+			      <li>A display related function was supported(VIDEO command)</li>
+			      <li>Sound related functions were supported(BEEP, PLAY, TEMPO, SOUND command)</li>
+			      <li>A machine language related function was supported(USR command)</li>
+			      <li>EEPROM was supported, the save destination of the program was changed(SAVE, LOAD command)</li>
+			      <li>Behavior of FILES command without parameters was changed(From FILES 3 equivalent to FILES 20 equivalent)</li>
+			      <li>Behavior of KBD command was changed to save setting in keymap.txt</li>
+			      <li>Font anti-aliasing was disabled(scaling_kernel = 8 added to config.txt)</li>
+			      <li>Specification changes in 1.2.4(1.2b56) of LPC1114 edition were incorporated
+				<ul>
+				  <li>Behavior of FILES0,0 was changed to display only file 0</li>
+				  <li>A command for suppression of error message was changed from OK0 to OK2</li>
+				  <li>It was changed to completely ignore spaces between commands</li>
+				  <li>Now, It can be set the communication speed of I2C using the second parameter of the BPS command ex)BPS0,100 'Set to 100kHz</li>
+				  <li>Switching of kana input mode by [Right Alt] + [K] was removed</li>
+				  <li>[Right Alt] was changed to work the same way as [Left Alt]</li>
+				  <li>[Alt] + [W] was changed to work the same way as [Alt] + [0]</li>
+				  <li>[Alt] + [X] was changed to work the same way as [Alt] + [1]</li>
+				  <li>[Alt] + [Y] was changed to work the same way as [Alt] + [2]</li>
+				  <li>[Alt] + [Z] was changed to work the same way as [Alt] + [3]</li>
+				</ul>
+			      </li>
+			    </ul>
+			  </dd>
+			  <dt>[2018/04/24] ver1.2.4.fw-5db8e4e</dt>
 			  <dd>
 			    <ul>
 			      <li>Firmware has been updated to the version compatible with Raspberry Pi 3 Model B +</li>
 			    </ul>
 			  </dd>
-			  <dt>ver1.2.4</dt>
+			  <dt>[2017/12/25] ver1.2.4</dt>
 			  <dd>
 			    <ul>
 			      <li>[issue 1007] has been fixed</li>
@@ -545,7 +596,7 @@
 			      <li>Screen rendering processing has been improved.(related to issue 1006, 1007)</li>
 			    </ul>
 			  </dd>
-			  <dt>ver1.2.3</dt>
+			  <dt>[2017/12/09] ver1.2.3</dt>
 			  <dd>
 			    <ul>
 			      <li>[issue 1004] has been fixed</li>
