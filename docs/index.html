@@ -282,22 +282,34 @@
 					</td>
 				</tr>
 				<tr>
-					<td>IOT.IN</td>
-					<td>Receive numerical values from sakura.io with I2C</td>
+					<td>IoT.IN</td>
 					<td>
-                                               ?IOT.IN() 'Display received numerical value<br/>
+					  Receive numerical values from sakura.io with I2C
+					  <ul>
+					    <li>Receive from all channels</li>
+					    <li>Regardless of the transmission data type, the lower 2 bytes are handled as 16 bit integer with sign</li>
+					  </ul>
+					</td>
+					<td>
+                                               ?IoT.IN() 'Display received numerical value<br/>
 					</td>
 				</tr>
 				<tr>
-					<td>IOT.OUT</td>
-					<td>Send numerical value to sakura.io with I2C</td>
+					<td>IoT.OUT</td>
 					<td>
-                                               IOT.OUT 111 'Send 111<br/>
+					  Send numerical value to sakura.io with I2C
+					  <ul>
+					    <li>Send on channel 0</li>
+					    <li>The data type is an unsigned 64 bit integer. (L, 0x4c)</li>
+					  </ul>
+					</td>
+					<td>
+                                               IoT.OUT 111 'Send 111<br/>
 					</td>
 				</tr>
 			</table>
 			<p class="note">
-			  *1 IOT.IN and IOT.OUT are implemented in LPC1114 edition in beta version.
+			  *1 IoT.IN and IoT.OUT are implemented in LPC1114 edition in beta version.
 			</p>
 			<p class="note">
 			  *2 From ver1.2.5, the setting is saved in keymap.txt with the KBD command.
@@ -558,7 +570,7 @@
 			  <dt>[2018/06/01] ver1.2.5</dt>
 			  <dd>
 			    <ul>
-			      <li>sakura.io was supported(IOT.IN, IOT.OUT command)</li>
+			      <li>sakura.io was supported(IoT.IN, IoT.OUT command)</li>
 			      <li>A display related function was supported(VIDEO command)</li>
 			      <li>Sound related functions were supported(BEEP, PLAY, TEMPO, SOUND command)</li>
 			      <li>A machine language related function was supported(USR command)</li>
