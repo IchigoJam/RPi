@@ -18,7 +18,7 @@
 <div id="title">
 	<p class="back"><a href="http://na-s.jp/IJBRPi/">&lt; IchigoJam BASIC RPi/RPi+</a></p>
 	<h1>IchigoJam BASIC RPi1.2 Documents</h1>
-	<p>[2018/06/01]</p>
+	<p>[2018/06/08]</p>
 	<p><a href="index_ja.html">日本語版(Japanese Edition) &gt;</a></p>
 </div><!-- /#title -->
 
@@ -471,13 +471,6 @@
 					<td></td>
 					<td>Output(fixed)</td>
 				</tr>
-				<tr>
-					<td>29</td>
-					<td></td>
-					<td>SND(ver1.2.5 or later)</td>
-					<td></td>
-					<td>Output(fixed)</td>
-				</tr>
 			</table>
 		</div><!-- /.block-->
 
@@ -522,6 +515,22 @@
 		</div><!-- /.block-->
 		
 		<div class="block">
+			<h3>BEEP/PLAY</h3>
+			<p>The physical pin where the electric signal actually flows<br/>
+			  by using BEEP/PLAY command is as follows.</p>
+			<table>
+				<tr>
+					<th>Physical pin</th>
+					<th>function</th>
+				</tr>
+				<tr>
+					<td>29</td>
+					<td>SND</td>
+				</tr>
+			</table>
+		</div><!-- /.block-->
+		
+		<div class="block">
 			<h3>Pinout</h3>
 			<a href="image/pin.png"><img src="image/pin.png" alt="" style="width:600px;" /></a>
 		</div><!-- /.block-->
@@ -555,6 +564,7 @@
 		<div class="block">
 			<h3>Fixed Issues</h3>
 			<ul>
+				<li>[issue 1009] LED command does not work on Raspberry Pi 3 Model B+.</li>
 				<li>[issue 1007] The cursor does not blink.</li>
 				<li>[issue 1006] The value of TICK and the number of screen refreshes are not synchronized.</li>
 				<li>[issue 1004] Screen changes by CLS, SCROLL, POKE, COPY, CLP are not reflected until the next PRINT processing.</li>
@@ -567,6 +577,12 @@
 		<div>
 			<h3>Change log</h3>
 			<dl>
+			  <dt>[2018/06/08] ver1.2.6</dt>
+			  <dd>
+			    <ul>
+			      <li>[issue 1009] has been fixed</li>
+			    </ul>
+			  </dd>
 			  <dt>[2018/06/01] ver1.2.5</dt>
 			  <dd>
 			    <ul>
