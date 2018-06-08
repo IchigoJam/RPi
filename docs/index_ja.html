@@ -18,7 +18,7 @@
 <div id="title">
 	<p class="back"><a href="http://na-s.jp/IJBRPi/index_ja.html">&lt; IchigoJam BASIC RPi/RPi+</a></p>
 	<h1>IchigoJam BASIC RPi1.2 ドキュメント</h1>
-	<p>[2018/06/01]</p>
+	<p>[2018/06/08]</p>
 	<p><a href="index.html">English Edition(英語版) &gt;</a></p>
 </div><!-- /#title -->
 
@@ -456,13 +456,6 @@
 					<td></td>
 					<td>出力(固定)</td>
 				</tr>
-				<tr>
-					<td>29</td>
-					<td></td>
-					<td>SND(ver1.2.5以降)</td>
-					<td></td>
-					<td>出力(固定)</td>
-				</tr>
 			</table>
 		</div><!-- /.block-->
 
@@ -505,6 +498,21 @@
 		</div><!-- /.block-->
 		
 		<div class="block">
+			<h3>BEEP/PLAY</h3>
+			<p>BEEP/PLAY コマンドで実際に電気信号が入出力される物理PINは下記のようになります。</p>
+			<table>
+				<tr>
+					<th>物理PIN</th>
+					<th>機能</th>
+				</tr>
+				<tr>
+					<td>29</td>
+					<td>SND</td>
+				</tr>
+			</table>
+		</div><!-- /.block-->
+		
+		<div class="block">
 			<h3>ピン説明図</h3>
 			<a href="image/pin.png"><img src="image/pin.png" alt="" style="width:600px;" /></a>
 		</div><!-- /.block-->
@@ -538,6 +546,7 @@
 		<div class="block">
 			<h3>解決済みの課題</h3>
 			<ul>
+				<li>[issue 1009] Raspberry Pi 3 Model B+ で LED コマンドが動作しない</li>
 				<li>[issue 1007] カーソルが点滅しない</li>
 				<li>[issue 1006] TICKの値と画面のリフレッシュ回数が同期していない</li>
 				<li>[issue 1004] CLS,SCROLL,POKE,COPY,CLP による画面の変更が次のPRINT処理まで反映されない</li>
@@ -550,6 +559,12 @@
 		<div>
 			<h3>更新履歴</h3>
 			<dl>
+			  <dt>[2018/06/08] ver1.2.6</dt>
+			  <dd>
+			    <ul>
+			      <li>[issue 1009] を解決しました</li>
+			    </ul>
+			  </dd>
 			  <dt>[2018/06/01] ver1.2.5</dt>
 			  <dd>
 			    <ul>
