@@ -18,7 +18,7 @@
 <div id="title">
 	<p class="back"><a href="http://na-s.jp/IJBRPi/">&lt; IchigoJam BASIC RPi/RPi+</a></p>
 	<h1>IchigoJam BASIC RPi+1.2 Documents</h1>
-	<p>[2018/01/10]</p>
+	<p>[2018/06/15]</p>
 	<p><a href="plus_ja.html">日本語版(Japanese Edition) &gt;</a></p>
 </div><!-- /#title -->
 
@@ -46,6 +46,7 @@
 		  Compatibility is confirmed with the following models.
 		</p>
 		<ul>
+				<li>Raspberry Pi 3 Model B+</li>
 				<li>Raspberry Pi 3 Model B V1.2</li>
 				<li>Raspberry Pi Zero W V1.1</li>
 				<li>Raspberry Pi Zero V1.3</li>
@@ -82,6 +83,7 @@
 		<div class="block">
 		<h3>Update</h3>
 		<p>To update to the latest version, follow the procedure below.</p>
+		<p class="note">* Since updating the SAVE and LOAD command specifications to support EEPROM with ver1.2.5, it may be necessary to adjust the file name in the &quot;files&quot; directory at the time of update. Please see &quot;<a href="#save_load_specification">SAVE/LOAD Destination</a>&quot; for details.</p>
 		<ul>
 		  <li>Using a PC, copy files in the microSD memory card to the desired location.(backup)</li>
 		  <li>Download and unpack the latest version of IchigoJam BASIC RPi+ from the URL described in the package.</li>
@@ -113,7 +115,7 @@
 				<td>Japanese layout</td>
 			</tr>
 		</table>
-		<p class="note">* Changing the keyboard layout after startup is also available by using KBD Command.<br/>
+		<p class="note">* Changing the keyboard layout after startup is also available by using KBD command.<br/>
 		  (refer to the document below.)</p>
 		</div><!-- /.block-->
 
@@ -190,11 +192,12 @@
 	<div>
 		<h2>5. Differences from the original edition</h2>
 		<p>
-			IchigoJam BASIC RPi is ported based on version 1.2.3 of the original edition (LPC1114 edition).<br/>
+			IchigoJam BASIC RPi is ported based on version 1.2.4(1.2b56)(*) of the original edition (LPC1114 edition).<br/>
 			The operation method and available commands are basically same as the original edition, <br/>
 			but the following points are different.<br/>
 			A Document of the original edition is here.
 			<a target="_blank" href="https://ichigojam.net/IchigoJam-en.html">https://ichigojam.net/IchigoJam-en.html</a>
+			<p class="note">* ver1.2.5 or later. Before ver1.2.4, ported based on ver1.2.3 of LPC1114 edition.</p>
 		</p>
 
 		<div class="block">
@@ -204,10 +207,6 @@
 				<tr>
 					<th>Key</th>
 					<th>Reaction of the original edition</th>
-				</tr>
-				<tr>
-					<td>[Right Alt]</td>
-					<td>Switching Kana input mode(same as [kana])</td>
 				</tr>
 				<tr>
 					<td>[Ctrl] + [Shift]</td>
@@ -227,10 +226,6 @@
 				<tr>
 					<th>Key</th>
 					<th>Reaction of the RPi edition</th>
-				</tr>
-				<tr>
-					<td>[Right Alt] + [K]</td>
-					<td>Switching Kana input mode(same as [kana])</td>
 				</tr>
 				<tr>
 					<td>[Ctrl] + [Shift] + [K]</td>
@@ -253,11 +248,6 @@
 					<th>Reaction of the RPi edition</th>
 				</tr>
 				<tr>
-					<td>VIDEO</td>
-					<td>Video/Display Setting</td>
-					<td>Do nothing</td>
-				</tr>
-				<tr>
 					<td>SWITCH</td>
 					<td>Change the Display</td>
 					<td>Do nothing</td>
@@ -272,37 +262,12 @@
 					<td>Return voltage of external input as a numerical value</td>
 					<td>Always returns 0</td>
 				</tr>
-				<tr>
-					<td>BEEP</td>
-					<td>Sound beep</td>
-					<td>Do nothing</td>
-				</tr>
-				<tr>
-					<td>PLAY</td>
-					<td>Play music written in MML</td>
-					<td>Do nothing</td>
-				</tr>
-				<tr>
-					<td>TEMPO</td>
-					<td>Change the tempo of music being played</td>
-					<td>Do nothing</td>
-				</tr>
-				<tr>
-					<td>SOUND</td>
-					<td>If sound is playing, return 1</td>
-					<td>Always returns 0</td>
-				</tr>
-				<tr>
-					<td>USR</td>
-					<td>Call the Machine code</td>
-					<td>Do nothing</td>
-				</tr>
 			</table>
 		</div><!-- /.block-->
 
 		<div class="block">
 			<h3>Commands specific for RPi edition</h3>
-			<p>Following commands are implemented in RPi edition only</p>
+			<p>Following commands are implemented in RPi edition only(*1)</p>
 			<table>
 				<tr>
 					<th>Command</th>
@@ -311,13 +276,45 @@
 				</tr>
 				<tr>
 					<td>KBD</td>
-					<td>Change the keyboard layout</td>
+					<td>Change the keyboard layout(*2)</td>
 					<td>
 						KBD 0 'Swicthing To US<br/>
 						KBD 1 'Swicthing To Japanese<br/>
 					</td>
 				</tr>
+				<tr>
+					<td>IoT.IN</td>
+					<td>
+					  Receive numerical values from sakura.io with I2C
+					  <ul>
+					    <li>Receive from all channels</li>
+					    <li>Regardless of the transmission data type, the lower 2 bytes are handled as 16 bit integer with sign</li>
+					  </ul>
+					</td>
+					<td>
+                                               ?IoT.IN() 'Display received numerical value<br/>
+					</td>
+				</tr>
+				<tr>
+					<td>IoT.OUT</td>
+					<td>
+					  Send numerical value to sakura.io with I2C
+					  <ul>
+					    <li>Send on channel 0</li>
+					    <li>The data type is an unsigned 64 bit integer. (L, 0x4c)</li>
+					  </ul>
+					</td>
+					<td>
+                                               IoT.OUT 111 'Send 111<br/>
+					</td>
+				</tr>
 			</table>
+			<p class="note">
+			  *1 IoT.IN and IoT.OUT are implemented in LPC1114 edition in beta version.
+			</p>
+			<p class="note">
+			  *2 From ver1.2.5, the setting is saved in keymap.txt with the KBD command.
+			</p>
 			<p class="note">
 			  * The numerical value returned by LANG and the numerical value set by KBD are different.<br/>
 			  LANG returns the language number of the font to be displayed when enabling Kana input with IchigoJam in use.<br/>
@@ -326,15 +323,51 @@
 		</div><!-- /.block-->
 
 		<div class="block">
+			<a id="save_load_specification"></a>
+			<h3>SAVE/LOAD Destination</h3>
+			<p>The save destination of the program by the SAVE, LOAD command is as follows.<br/>
+			  With ver1.2.5, we changed the specification to support EEPROM.<br/>
+			  When updating from ver1.2.4 or earlier to ver1.2.5 or later, adjust the file name in the &quot;files&quot; directory of the microSD card to take over the created program.			  
+			</p>
+			<table>
+				<tr>
+					<th></th>
+					<th>microSD card(In the &quot;files&quot; directory)</th>
+					<th>EEPROM</th>
+				</tr>
+				<tr>
+					<td>ver1.2.4 or earier</td>
+					<td>
+					  0 to 3 and 100 to 227 (*.bin)
+					</td>
+					<td>
+					  [Not supported]
+					</td>
+				</tr>
+				<tr>
+					<td>ver1.2.5 or later</td>
+					<td>
+					  0 to 99 (*.bin)
+					</td>
+					<td>
+					  100 to 227
+					</td>
+				</tr>
+			</table>
+		</div><!-- /.block-->
+		
+		<div class="block">
 			<h3>Etc.</h3>
 			<p>In addition, there are following differences.</p>
 			<ul>
 				<li>If power is turned on without connecting the keyboard, FILE0 is automatically executed (LRUN0)</li>
-				<li>Only PWM3 and PWM4 can be used for PWM Command</li>
-				<li>IN3(OUT10) becomes a pull-up input with OUT10,-2 Command</li>
-				<li>LED Command and OUT7 Command are independent of each other</li>
+				<li>Only PWM3 and PWM4 can be used for PWM command</li>
+				<li>IN3(OUT10) becomes a pull-up input with OUT10,-2 command</li>
+				<li>LED command and OUT7 command are independent of each other</li>
 				<li>Power saving mode of WAIT command is not supported</li>
-				<li>The input/output destination of SAVE/LOAD is the file in the files directory of the microSD card (0-3, 100-227).</li>
+				<li>With the FILES command without parameters, It behaves equivalent to FILES20 (ver1.2.5 or later)</li>
+				<li>Clock down capability of VIDEO0 command is not supported (ver1.2.5 or later)</li>
+				<li>USR command supports Thumb instruction set for Pi / Pi Zero series and Thumb 2 instruction set for Pi 2 / Pi 3 series (ver1.2.5 or later)</li>
 			</ul>
 		</div><!-- /.block-->
 
@@ -350,9 +383,9 @@
 			<table>
 				<tr>
 					<th>Physical pin</th>
-					<th>Input Command</th>
-					<th>Output Command</th>
-					<th>PWM Command</th>
+					<th>Input command</th>
+					<th>Output command</th>
+					<th>PWM command</th>
 					<th>Initial state</th>
 				</tr>
 				<tr>
@@ -483,6 +516,22 @@
 		</div><!-- /.block-->
 		
 		<div class="block">
+			<h3>BEEP/PLAY</h3>
+			<p>The physical pin where the electric signal actually flows<br/>
+			  by using BEEP/PLAY command is as follows.</p>
+			<table>
+				<tr>
+					<th>Physical pin</th>
+					<th>function</th>
+				</tr>
+				<tr>
+					<td>29</td>
+					<td>SND</td>
+				</tr>
+			</table>
+		</div><!-- /.block-->
+		
+		<div class="block">
 			<h3>Pinout</h3>
 			<a href="image/pin.png"><img src="image/pin.png" alt="" style="width:600px;" /></a>
 		</div><!-- /.block-->
@@ -510,15 +559,13 @@
 			<h3>Planned actions</h3>
 			<ul>
 				<li>Improvement of key input processing. (related to issue 1005)</li>
-				<li>Display related implementation. (VIDEO, SWITCH command)</li>
-				<li>Sound related implementation. (BEEP, PLAY, TEMPO, SOUND command)</li>
-				<li>Machine language related implementation. (USR command)</li>
 			</ul>
 		</div><!-- /.block-->
 
 		<div class="block">
 			<h3>Fixed Issues</h3>
 			<ul>
+				<li>[issue 1009] LED command does not work on Raspberry Pi 3 Model B+.</li>
 				<li>[issue 1007] The cursor does not blink.</li>
 				<li>[issue 1006] The value of TICK and the number of screen refreshes are not synchronized.</li>
 				<li>[issue 1004] Screen changes by CLS, SCROLL, POKE, COPY, CLP are not reflected until the next PRINT processing.</li>
@@ -531,7 +578,49 @@
 		<div>
 			<h3>Change log</h3>
 			<dl>
-			  <dt>ver1.2.4</dt>
+			  <dt>[2018/06/08] ver1.2.6</dt>
+			  <dd>
+			    <ul>
+			      <li>[issue 1009] has been fixed</li>
+			    </ul>
+			  </dd>
+			  <dt>[2018/06/01] ver1.2.5</dt>
+			  <dd>
+			    <ul>
+			      <li>sakura.io was supported(IoT.IN, IoT.OUT command)</li>
+			      <li>A display related function was supported(VIDEO command)</li>
+			      <li>Sound related functions were supported(BEEP, PLAY, TEMPO, SOUND command)</li>
+			      <li>A machine language related function was supported(USR command)</li>
+			      <li>EEPROM was supported, the save destination of the program was changed(SAVE, LOAD command)</li>
+			      <li>Behavior of FILES command without parameters was changed(From FILES 3 equivalent to FILES 20 equivalent)</li>
+			      <li>Behavior of KBD command was changed to save setting in keymap.txt</li>
+			      <li>Font anti-aliasing was disabled(scaling_kernel = 8 added to config.txt)</li>
+			      <li>Specification changes in 1.2.4(1.2b56) of LPC1114 edition were incorporated
+				<ul>
+				  <li>Behavior of FILES0,0 was changed to display only file 0</li>
+				  <li>A command for suppression of error message was changed from OK0 to OK2</li>
+				  <li>It was changed to completely ignore spaces between commands</li>
+				  <li>Now, It can be set the communication speed of I2C using the second parameter of the BPS command ex)BPS0,100 'Set to 100kHz</li>
+				  <li>Switching of kana input mode by [Right Alt] + [K] was removed</li>
+				  <li>[Right Alt] was changed to work the same way as [Left Alt]</li>
+				  <li>[Alt] + [W] was changed to work the same way as [Alt] + [0]</li>
+				  <li>[Alt] + [X] was changed to work the same way as [Alt] + [1]</li>
+				  <li>[Alt] + [Y] was changed to work the same way as [Alt] + [2]</li>
+				  <li>[Alt] + [Z] was changed to work the same way as [Alt] + [3]</li>
+				</ul>
+			      </li>
+			      <li>Added support for Sensors of Sense HAT
+				<ul>
+				  <li>Gyroscope sensor</li>
+				  <li>Magnetometer sensor</li>
+				  <li>Barometric pressure sensor (pressure,tempreture)</li>
+				  <li>Humidity sensor (humidity,tempreture)</li>
+				</ul>
+			      </li>
+			      <li>Simplify connection of Touchscreen Display (without SDA and SCL cable)</li>
+			    </ul>
+			  </dd>
+			  <dt>[2017/12/25] ver1.2.4</dt>
 			  <dd>
 			    <ul>
 			      <li>[issue 1007] has been fixed</li>
@@ -539,7 +628,7 @@
 			      <li>Screen rendering processing has been improved.(related to issue 1006, 1007)</li>
 			    </ul>
 			  </dd>
-			  <dt>ver1.2.3</dt>
+			  <dt>[2017/12/09] ver1.2.3</dt>
 			  <dd>
 			    <ul>
 			      <li>[issue 1004] has been fixed</li>
@@ -661,21 +750,21 @@
 				  SH.AZ<br/>
 				</td>
 				<td>
-				  Get the acceleration of Sense HAT<br/>
+				  Get the acceleration in each axis direction from the acceleration sensor<br/>
 				  <b>SH.AX()</b><br/>
 				  <b>SH.AY()</b><br/>
 				  <b>SH.AZ()</b><br/>
 				</td>
 				<td>
-				  ?SH.AX() 'Show acceleration on X axis<br/>
-				  ?SH.AY() 'Show acceleration on Y axis<br/>
-				  ?SH.AZ() 'Show acceleration on Z axis<br/>
+				  ?SH.AX() 'Show acceleration in X axis direction<br/>
+				  ?SH.AY() 'Show acceleration in Y axis direction<br/>
+				  ?SH.AZ() 'Show acceleration in Z axis direction<br/>
 				</td>
 			</tr>
 			<tr>
 				<td>SH.BTN</td>
 				<td>
-				  Get the state of Sense HAT joystick<br/>
+				  Get the state of the joystick<br/>
 				  <b>SH.BTN()</b><br/>
 				  0th bit from the right: Selecting "Down"<br/>
 				  1st bit from the right: Selecting "Rigiht"<br/>
@@ -743,12 +832,95 @@
 				  ?SH.BPRESS()
 				</td>
 			</tr>
+			<tr>
+				<td>
+				  SH.GX<br/>
+				  SH.GY<br/>
+				  SH.GZ<br/>
+				  (ver1.2.5 or later)
+				</td>
+				<td>
+				  Acquire angular velocity of each axis from Gyroscope sensor<br/>
+				  <b>SH.GX()</b><br/>
+				  <b>SH.GY()</b><br/>
+				  <b>SH.GZ()</b><br/>
+				</td>
+				<td>
+				  ?SH.GX() 'Show angular velocity of X axis<br/>
+				  ?SH.GY() 'Show angular velocity of Y axis<br/>
+				  ?SH.GZ() 'Show angular velocity of Z axis<br/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				  SH.MX<br/>
+				  SH.MY<br/>
+				  SH.MZ<br/>
+				  (ver1.2.5 or later)
+				</td>
+				<td>
+				  Get magnetic flux density in each axis direction from the Magnetometer sensor<br/>
+				  <b>SH.MX()</b><br/>
+				  <b>SH.MY()</b><br/>
+				  <b>SH.MZ()</b><br/>
+				</td>
+				<td>
+				  ?SH.MX() 'Show magnetic flux density in X axis direction<br/>
+				  ?SH.MY() 'Show magnetic flux density in Y axis direction<br/>
+				  ?SH.MZ() 'Show magnetic flux density in Z axis direction<br/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				  SH.APRESS<br/>
+				  (ver1.2.5 or later)
+				</td>
+				<td>
+				  Get a 10 times value of the atmospheric pressure<br/>
+				  <b>SH.APRESSS()</b>
+				</td>
+				<td>
+				  'Show atmospheric pressure in units of hectopascals<br/>
+				  ?SH.APRESS()/10
+				</td>
+			</tr>
+			<tr>
+				<td>
+				  SH.HUMID<br/>
+				  (ver1.2.5 or later)
+				</td>
+				<td>
+				  Get a 100 times value of the humidity<br/>
+				  <b>SH.HUMID()</b>
+				</td>
+				<td>
+				  'Show humidity in percent<br/>
+				  ?SH.HUMID()/100
+				</td>
+			</tr>
+			<tr>
+				<td>
+				  SH.TEMP<br/>
+				  (ver1.2.5 or later)
+				</td>
+				<td>
+				  Get a 100 times value of the temperature from the humidity sensor<br/>
+				  <b>SH.TEMP(), SH.TEMP(1)</b><br/>
+				  <br/>
+				  Get a 100 times value of the temperature from the Barometric pressure sensor<br/>
+				  <b>SH.TEMP(2)</b>
+				</td>
+				<td>
+				  'Show temperature in degrees Celsius<br/>
+				  ?SH.TEMP()/100
+				</td>
+			</tr>
 		</table>
 		</div>
 
 		<div class="block">
 		<h3>Commands support Touchscreen Display</h3>
-		<p>
+		<!-- p>
 		  Please refer to <a href="https://www.element14.com/community/docs/DOC-78156/l/raspberry-pi-7-touchscreen-display" target="_blank">the explanation here</a> when connecting Touchscreen Display.<br/>
 		  In order to use the command, it is necessary to connect the following two places<br/>
 		  in addition to general connections.
@@ -756,8 +928,7 @@
 		    <li>Raspberry Pi's physical pin 3 (SDA) and Touchscreen Display's SDA</li>
 		    <li>Raspberry Pi's physical pin 5 (SCL) and Touchscreen Display's SCL</li>
 		  </ul>
-		</p>
-		
+		</p -->
 		<table style="width:800px;">
 			<tr>
 				<th>Command</th>
@@ -770,7 +941,7 @@
 				  TS.Y<br/>
 				</td>
 				<td>
-				  Get the touched location of Touchscreen (lower right origin)<br/>
+				  Get the touched location of Touchscreen<br/>
 				  <b>TS.X()</b> Horizontal position (0-799, Not touched:-1)<br/>
 				  <b>TS.Y()</b> Vertical position (0-479, Not touched:-1)<br/>
 				</td>
@@ -782,7 +953,7 @@
 			<tr>
 				<td>TS.GET</td>
 				<td>
-				  Get the touched location of Touchscreen (lower right origin)<br/>
+				  Get the touched location of Touchscreen<br/>
 				  <b>TS.GET()</b><br/>
 				  Leading 8bit: Horizontal position (0-199, Not touched:0)<br/>
 				  Later 8bit: Vertical position (0-119, Not touched:0)<br/>
@@ -795,6 +966,43 @@
 				</td>
 			</tr>
 
+		</table>
+		<p>
+		  With ver1.2.5, we changed the specification to support Easy connection of Touchscreen Display.<br/>
+		  How to of the connection in each version and the definition of the origin of coordinates acquired by each command are as follows.<br/>
+		  Please refer to <a href="https://www.element14.com/community/docs/DOC-78156/l/raspberry-pi-7-touchscreen-display" target="_blank">the explanation here</a> when connecting Touchscreen Display.<br/>
+
+		</p>
+		<table style="width:800px;">
+			<tr>
+				<th></th>
+				<th>How to connect</th>
+				<th>Origin of coordinates</th>
+			</tr>
+			<tr>
+				<td>ver1.2.5 or later</td>
+				<td>
+				  Connect ribbon cable and power cable<br/>
+				</td>
+				<td>
+				  upper left origin
+				</td>
+			</tr>
+			<tr>
+				<td>ver1.2.4 or earlier</td>
+				<td>
+				  Connect below
+				  <ul>
+				    <li>ribbon cable</li>
+				    <li>power cable</li>
+				    <li>Raspberry Pi's physical pin 3 (SDA) and Touchscreen Display's SDA</li>
+				    <li>Raspberry Pi's physical pin 5 (SCL) and Touchscreen Display's SCL</li>
+				  </ul>
+				</td>
+				<td>
+				  lower right origin
+				</td>
+			</tr>
 		</table>
 		</div>
 		
