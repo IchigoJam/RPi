@@ -213,6 +213,12 @@ h1,h2,h3{font-weight:normal;}
 #contents #five02 th:nth-child(1),#contents #five02 td:nth-child(1){width:40%;}
 #contents #five02 th:nth-child(2),#contents #five02 td:nth-child(2){width:60%;}
 
+
+#contents_faq dl dd {
+    margin-left:20pt;
+    margin-bottom:40px;
+}
+
 /* -------------------------------------------------------------- */
 /* download */
 /* -------------------------------------------------------------- */
